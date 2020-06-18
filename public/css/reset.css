@@ -1,0 +1,120 @@
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --theme-opposite: #4f4dc4;
+  --theme-color: #ce181e;
+  --theme-white: #fff;
+  --theme-para: #777;
+  --theme-title: #1c1c1c;
+  --theme-dark: #181818;
+  --theme-dark-lite: #272626;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Oswald', sans-serif;
+  font-family: 'Proza Libre', sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+button,
+input,
+select {
+  -webkit-appearance: none;
+  outline: none;
+  font-family: 'Open Sans', sans-serif;
+}
+
+textarea {
+  font-family: 'Open Sans', sans-serif;
+}
+
+button,
+.btn,
+select {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+iframe {
+  border: none;
+  display: block;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  color: var(--theme-para);
+  line-height: 28px;
+}
+
+.btn,
+button,
+.actionbg,
+input,
+textarea {
+  border-radius: 0px;
+}
+
+.btn:hover,
+button:hover {
+  transition: 0.5s ease;
+  -webkit-transition: 0.5s ease;
+  -o-transition: 0.5s ease;
+  -ms-transition: 0.5s ease;
+  -moz-transition: 0.5s ease;
+}
+
+@font-face {
+  font-family: 'FontAwesome';
+  src: url("../fonts/fontawesome-webfont3e6e.eot?v=4.7.0");
+  src: url("../fonts/fontawesome-webfontd41d.eot?#iefix&v=4.7.0") format("embedded-opentype"), url("../fonts/fontawesome-webfont3e6e.woff2?v=4.7.0") format("woff2"), url("../fonts/fontawesome-webfont3e6e.woff?v=4.7.0") format("woff"), url("../fonts/fontawesome-webfont3e6e.ttf?v=4.7.0") format("truetype"), url("../fonts/fontawesome-webfont3e6e.svg?v=4.7.0#fontawesomeregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+img {
+  max-width: 100%;
+}
+body{
+  overflow-x: hidden;
+}
+
+p {
+    color: var(--theme-para);
+    line-height: 28px;
+}
+
+iframe {
+    border: none;
+    display: block;
+}
+

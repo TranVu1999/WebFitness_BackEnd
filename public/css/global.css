@@ -1,0 +1,248 @@
+.img-responsive {
+  max-width: 100%;
+}
+
+.d-grid {
+  display: grid;
+}
+
+.d-flex {
+  display: flex;
+  display: -webkit-flex;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.p-fixed {
+  position: fixed;
+}
+
+.p-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fa-asl-interpreting:before, 
+.fa-american-sign-language-interpreting:before {
+  content: "\f2a3";
+}
+
+.fa-tasks:before {
+  content: "\f0ae";
+}
+
+.fa-adjust:before {
+  content: "\f042";
+}
+
+.fa-bell-o:before {
+  content: "\f0a2";
+}
+
+.fa-lightbulb-o:before {
+  content: "\f0eb";
+}
+
+.fa-heart-o:before {
+  content: "\f08a";
+}
+
+.fa-shield:before {
+  content: "\f132";
+}
+
+.fa-smile-o:before {
+  content: "\f118";
+}
+
+.fa-play:before {
+  content: "\f04b";
+}
+
+.fa-facebook-f:before, .fa-facebook:before {
+  content: "\f09a";
+}
+
+.fa-linkedin:before {
+  content: "\f0e1";
+}
+
+.fa-chain:before, .fa-link:before {
+  content: "\f0c1";
+}
+
+.fa-twitter:before {
+  content: "\f099";
+}
+
+.fa-google-plus:before {
+  content: "\f0d5";
+}
+
+.fa-github:before {
+  content: "\f09b";
+}
+
+.fa-angle-double-right:before {
+  content: "\f101";
+}
+
+.fa-envelope-o:before {
+  content: "\f003";
+}
+
+.fa-phone:before {
+  content: "\f095";
+}
+
+.fa-map-marker:before {
+  content: "\f041";
+}
+
+.fa-home:before {
+  content: "\f015";
+}
+
+.fa-search:before {
+  content: "\f002";
+}
+
+.fa-angle-double-left:before {
+  content: "\f100";
+}
+
+.fa-send:before, .fa-paper-plane:before {
+  content: "\f1d8";
+}
+
+.fa-user:before {
+  content: "\f007";
+}
+
+.fa-commenting-o:before {
+  content: "\f27b";
+}
+
+.fa-chevron-down:before {
+  content: "\f078";
+}
+
+.fa-remove:before, .fa-close:before, .fa-times:before {
+  content: "\f00d";
+}
+
+.fa-phone-square:before {
+  content: "\f098";
+}
+
+.fa-envelope:before {
+  content: "\f0e0";
+}
+
+.fa-eye:before {
+  content: "\f06e";
+}
+
+.fa-shopping-cart:before {
+  content: "\f07a";
+}
+
+.fa-truck:before {
+  content: "\f0d1";
+}
+
+.fa-question-circle:before {
+  content: "\f059";
+}
+
+.fa-umbrella:before {
+  content: "\f0e9";
+}
+
+.fa-credit-card:before {
+  content: "\f09d";
+}
+
+.fa-dollar:before, .fa-usd:before {
+    content: "\f155";
+}
+
+.fa-thumbs-up:before {
+    content: "\f164";
+}
+
+.fa-star:before {
+    content: "\f005";
+}
+
+.py-80{
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.mt-30{
+  margin-top: 30px;
+}
+
+.mb-60{
+  margin-bottom: 60px;
+}
+
+h3.title, h3.title.two {
+  font-size: 40px;
+  line-height: 50px;
+  margin-bottom: 24px;
+  position: relative;
+  display: inline-block;
+  padding-left: 140px;
+  color: var(--theme-white);
+}
+
+h3.title::before, h3.title.two::before {
+  content: '';
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.3);
+  height: 1px;
+  padding-right: 16px;
+  margin-top: 10px;
+  position: absolute;
+  width: 120px;
+  left: 0px;
+  padding-right: 10px;
+  top: 0px;
+}
+
+.text-left{
+  text-align: left!important;
+}
+
+.text-right{
+  text-align: right;
+}
