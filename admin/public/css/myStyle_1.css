@@ -1205,4 +1205,9 @@ label#change-thumb-video{
     margin-bottom: 15px;
     padding: 10px 0px;
 }
+
+.btn-chapter-title{
+    margin: 0;
+    padding: 0;
+}
 /*End style add-course*/

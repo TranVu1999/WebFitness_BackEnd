@@ -9,7 +9,9 @@ class Lesson{
 class Chapter{
     public $chapter_title = '';
     public $list_lesson = array();
-    
+    public function addLesson($lesson){
+        array_push($this->list_lesson, $lesson);
+    }  
 }
 
 class Course{

@@ -2,33 +2,31 @@
 
 // Tất cả các action được lưu trong này
 // hàm này sẽ được chạy lên trước rồi mới chạy tới mấy hàm sau
-$course = new Course();
+
 function construct() {
-    load_model('addCourse');   
+    load_model('addCourse'); 
 }
 
 function indexAction() {
     load_view('addCourse');   
 }
 
-function addChapterAction() {
-    $chapter_title = $_POST['chapter_title'];
-    $course_title = $_POST['course_title'];
+function addCourseAction() {
+    $course_info = $_POST['course'];
+    $course = json_decode($course_info);
     
-    $chapter = new Chapter();
-    $chapter->chapter_title = $chapter_title;
+    $course_title_format = str_replace(' ', '-', strtolower($course->course_title));
     
-    global $course;
-    $course->course_title = $course_title;
-    $course->addChapter($chapter);
-    echo $course->list_chapter[0]->chapter_title;
-}
+    add_course('course_avatar', $course->course_title, $course->course_desc, $course->course_detail, $course_title_format);
+    
+    $course_id = get_course($course->course_title);
+    $chapter_order = 0;
+    foreach($course->list_chapter as $chapter){
+        add_table_of_content($chapter->chapter_title, $chapter_order, $course_id);
+        $chapter_order ++;
+    }
+    
+    echo "ok";
+} 
 
-function addLessonAction() {
-    $order_lesson = $_POST['order'];
-    $lesson_title = $_POST['lesson_title'];
-    $of_chapter = $_POST['order_chapter'];
-    
-    echo $of_chapter;
-}
 

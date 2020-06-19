@@ -22,6 +22,7 @@
     <link href="public/css/datatables.min.css" rel="stylesheet">
     <!-- Sweet   -->
     <link href="public/css/sweetalert2.min.css" rel="stylesheet">
+    <link href="public/css/toastr.min.css" rel="stylesheet">
     <!-- Greendash styles -->
     <link href="public/css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="public/vendors/css/vendor.bundle.base.css">
@@ -258,7 +259,7 @@
                                             <div class="col-12">
                                                 <div class="input-group">
                                                     <input type="text" class="form-control mr-2" required="" placeholder="Add course title">
-                                                    <button type="submit" class="btn btn-outline-primary btn-chapter-title">Add Course Title</button>
+                                                    <button type="submit" class="btn btn-outline-primary btn-chapter-title">Add Course</button>
                                                 </div>
                                                 <div id="notify_course_title"></div>
                                             </div>
@@ -289,7 +290,13 @@
                                             <textarea id='desc-detail-course' class="tinymce"></textarea>
                                         </div>
                                     </div>
+                                    
+                                    <div class="mt-5">
+                                        <button type="button" id="add-desc" class="btn btn-outline-primary">Add Description</button>
+                                    </div>
+                                    
                                 </div>
+                                
                                 <div class="col-lg-4">
                                     <div class="" id="show-lecture">
                                         <div class="outline-head">
@@ -351,6 +358,10 @@
     <script src="public/js/perfect-scrollbar.js"> </script>
     <script src="public/js/jquery-ui.min.js"> </script>
     <!-- Global Required Scripts End -->
+    
+    <!-- Page Specific Scripts Start -->
+    <script src="public/js/toastr.min.js"> </script>
+    <script src="public/js/toast.js"> </script>
 
     <!-- Popups -->
     <script src="public/js/promise.min.js"> </script>
