@@ -254,17 +254,15 @@
                         <div class="ms-panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form action="#" id="course-title" method="post">
-                                        <div class="form-row">
-                                            <div class="col-12">
-                                                <div class="input-group">
-                                                    <input type="text" class="form-control mr-2" required="" placeholder="Add course title">
-                                                    <button type="submit" class="btn btn-outline-primary btn-chapter-title">Add Course</button>
-                                                </div>
-                                                <div id="notify_course_title"></div>
+                                    <div class="form-row">
+                                        <div class="col-12">
+                                            <div class="input-group">
+                                                <input type="text" class="form-control mr-2" required="" placeholder="Add course title" id="course-title">
+                                                <button type="button" class="btn btn-outline-primary btn-course">Add Course</button>
                                             </div>
+                                            <div id="notify_course_title"></div>
                                         </div>
-                                    </form>
+                                    </div>
                                 </div>
                                 <div class="col-lg-8">
                                     <div class="thumb">
@@ -287,7 +285,7 @@
                                             </div>
                                         </div>
                                         <div class="lesson-content">
-                                            <textarea id='desc-detail-course' class="tinymce"></textarea>
+                                            <textarea id='desc-detail-lesson' class="tinymce"></textarea>
                                         </div>
                                     </div>
                                     
@@ -327,6 +325,52 @@
                                     </div>
                                 </div>
                             </div>                            
+                        </div>
+                        
+                       <div id="modal-course">
+                            <div class="ms-panel">
+                                <div class="ms-panel-header">
+                                    <div class="d-flex-between-center">
+                                        <h1 class="box-title">Course: Train woman PT</h1>
+                                        <button id="close-modal-lesson" class="btn btn-close-modal"><i class="far fa-times-circle"></i></button>
+                                    </div>
+                                </div>
+                                <div class="ms-panel-body">
+                                    <div id="notify-course"></div>
+                                    
+                                    <label for="validationCustom06">Add Course Avatar</label>
+                                    <div class="thumb-avatar" id="avatar-post">
+                                        <img src="" alt="" id="course-ava-upload">
+                                        <i class="fa fa-upload"></i>
+                                        <input type="file" id="upload-avatar">
+                                    </div>
+
+                                    <div class="lesson-detail mt-3">
+                                        
+                                        <form class="needs-validation clearfix" novalidate="">
+                                            <div class="form-row">
+                                                <div class="col-xl-12 col-md-12 ">
+                                                    <label for="validationCustom06">Course Description</label>
+                                                    <div class="input-group">
+                                                        <textarea class="form-control" id="course_desc" required class="course_desc"></textarea>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-12">
+                                                    <label for="validationCustom12">Course Detail</label>
+                                                    <div class="input-group">
+                                                        <textarea id='course-detail' class="tinymce"></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12 text-center">
+                                                    <button id="save-course" class="btn btn-primary has-icon mr-3"><i class="fa fa-edit"></i> Save Lesson</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -393,6 +437,7 @@
 
     <!-- Settings -->
     <script src="public/js/settings.js"></script>
+    <script src="public/js/setting-course-add.js"></script>
     <script src="public/js/mySetting_1.js"></script>
 
 </body>

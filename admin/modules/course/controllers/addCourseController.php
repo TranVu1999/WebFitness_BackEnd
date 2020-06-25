@@ -17,16 +17,22 @@ function addCourseAction() {
     
     $course_title_format = str_replace(' ', '-', strtolower($course->course_title));
     
-    add_course('course_avatar', $course->course_title, $course->course_desc, $course->course_detail, $course_title_format);
+//    Add Course
+    add_course($course->course_avatar, $course->course_title, $course->course_desc, $course->course_detail, $course_title_format);
     
+//    Add TableContent
     $course_id = get_course($course->course_title);
     $chapter_order = 0;
     foreach($course->list_chapter as $chapter){
-        add_table_of_content($chapter->chapter_title, $chapter_order, $course_id);
+        $chapter_id = add_table_of_content($chapter->chapter_title, $chapter_order, $course_id);
         $chapter_order ++;
+        
+        foreach($chapter->list_lesson as $lesson){
+            add_lesson($lesson->lesson_title, $lesson->desc, $lesson->order, $chapter_id, $lesson->path_video);
+        }
     }
     
-    echo "ok";
+    echo $course->course_title;
 } 
 
 

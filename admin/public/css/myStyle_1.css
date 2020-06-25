@@ -51,6 +51,7 @@
     top: 10px;
     right: 10px;
     border-radius: 50%;
+    padding: 
 }
 
 /*End style left-nav*/
@@ -1004,6 +1005,8 @@ ul.banner-control li{
 
 ul.table-of-content li{
     background: rgba(243, 216, 192, .5);
+    margin-bottom: 0!important;
+    padding: 0!important;
 }
 
 ul.table-of-content .part-info {
@@ -1048,11 +1051,14 @@ ul.table-of-content .part-info {
     transform: rotateZ(180deg);
 }
 
-ul.list-lecture li .lecture-item {
+
+ul.list-lecture li .lecture-item,
+ul.list-lesson li .lesson-item {
     display: flex;
 }
 
-.lecture-mark {
+.lecture-mark,
+.lesson-mark {
     font-size: 14px;
     padding-top: 4px;
 }
@@ -1061,32 +1067,42 @@ ul.list-lecture li .lecture-item {
     color: #297c04;
 }
 
-ul.list-lecture {
+ul.list-lecture,
+ul.list-lesson {
     background: #fff;
     display: none;
     font-size: 14px;
 }
 
-ul.list-lecture li{
-    padding: 10px 0px 10px 15px;
+ul.list-lecture li,
+ul.list-lesson li{
+    padding: 10px 15px 10px 15px!important;
     transition: all .3s;
+    border-bottom: 1px solid #808080;
 }
 
 ul.list-lecture li:hover{
     background: rgba(243, 216, 192);
 }
 
-ul.list-lecture .lecture-info {
+ul.list-lecture .lecture-info,
+ul.list-lesson .lesson-info {
     padding-left: 15px;
     flex: auto;
 }
 
-ul.list-lecture li a {
+ul.list-lecture li a,
+ul.list-lesson li a {
     color: #505763;
     display: block;
 }
 
-.lecture-info .lecture-duration {
+ul.list-lesson li a.lesson-title{
+    margin: 0!important;
+}
+
+.lecture-info .lecture-duration,
+.lesson-info .lesson-duration {
     color: #505763;
     font-size: 12px;
 }
@@ -1102,7 +1118,8 @@ ul.list-lecture li a {
 /*Start style box-modal-lesson*/
 #box-modal-course,
 #modal-add-lesson,
-#modal-lesson{
+#modal-lesson,
+#modal-course {
     display: none;
     width: 100%;
     height: 100vh;
@@ -1116,7 +1133,8 @@ ul.list-lecture li a {
 
 #course-para,
 #modal-add-lesson .ms-panel,
-#modal-lesson .ms-panel{
+#modal-lesson .ms-panel,
+#modal-course .ms-panel{
     width: 768px;
     min-height: 100px;
     max-height: 500px;
@@ -1127,7 +1145,8 @@ ul.list-lecture li a {
 }
 
 #modal-add-lesson .ms-panel,
-#modal-lesson .ms-panel{
+#modal-lesson .ms-panel,
+#modal-course .ms-panel{
     overflow: scroll;
     max-height: 550px;
     margin: 50px auto;
@@ -1170,10 +1189,6 @@ ul.list-lecture li a {
     color: #000;
 }
 
-#modal-add-lesson .lesson-detail{
-
-}
-
 #save-lesson{
     display: none;
 }
@@ -1191,6 +1206,12 @@ form#add-chapter{
     min-width: 70px;
 }
 
+.btn-course{
+    margin: 0;
+    padding: 0;
+}
+
+
 div#thumb-video{
     display: none;
 }
@@ -1206,8 +1227,8 @@ label#change-thumb-video{
     padding: 10px 0px;
 }
 
-.btn-chapter-title{
-    margin: 0;
-    padding: 0;
+.thumb-avatar img{
+    width: 100%;
+    height: 100%;
 }
 /*End style add-course*/

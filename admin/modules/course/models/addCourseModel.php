@@ -14,7 +14,7 @@
         global $conn;
         $strquery = "INSERT dbo.Course
             ( CourseId ,CourseAvatar ,CourseTitle ,CourseDesc ,CourseDetail ,CourseAlias ,CreatedDate ,CreatedBy ,ModifiedDate ,ModifiedBy ,CourseStatus )
-        VALUES  ( $amount_row ,'' ,N'$course_title' ,'$course_desc' ,'$course_detail' ,'$course_alias' ,GETDATE() ,N'' ,GETDATE() ,N'' , 1)";
+        VALUES  ( $amount_row ,'$course_avatar' ,N'$course_title' ,'$course_desc' ,'$course_detail' ,'$course_alias' ,GETDATE() ,N'' ,GETDATE() ,N'' , 1)";
 
         $getResuld = $conn->prepare($strquery);
         $getResuld->execute();
@@ -41,6 +41,7 @@
         return $results[0]['AmountRow'];
     }
     
+//    Return Chapter Id
     function add_table_of_content($chapter_title, $chapter_order, $course_id){
         $amount_row = (int)get_amount_row_table_of_content() + 1;
         global $conn;
@@ -50,8 +51,29 @@
 
         $getResuld = $conn->prepare($strquery);
         $getResuld->execute();
-        return True;
+        return $amount_row;
     }
     
+    function get_amount_row_lesson(){
+        global $conn;
+        $strquery = "SELECT count(*) AS AmountRow FROM dbo.Lesson";
+
+        $getResuld = $conn->prepare($strquery);
+        $getResuld->execute();
+        $results = $getResuld -> fetchAll(PDO::FETCH_ASSOC);
+        return $results[0]['AmountRow'];
+    }
     
+    function add_lesson($lesson_title, $lesson_detail, $lesson_order, $chapter_id, $path_video){
+        $amount_row = (int)get_amount_row_lesson() + 1;
+        global $conn;
+        $strquery = "INSERT dbo.Lesson
+        ( LessonId ,LessonTitle ,LessonAlias, LessonVideo ,LessonDetail ,[Order] ,TableOfContentId ,CreatedDate ,CreatedBy ,ModifiedDate ,ModifiedBy ,LessonStatus)
+        VALUES  ( $amount_row ,N'$lesson_title' ,'' , '$path_video',  N'$lesson_detail' ,$lesson_order ,$chapter_id , GETDATE() ,N'' ,  NULL , N'' ,1  )";
+
+        $getResuld = $conn->prepare($strquery);
+        $getResuld->execute();
+        return True;
+    }
+  
 ?>
