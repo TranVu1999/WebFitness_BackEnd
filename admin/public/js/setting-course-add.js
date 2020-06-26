@@ -134,11 +134,13 @@ $(document).on("submit", 'form.add-lesson', function() {
 $(document).on("click", 'ul.list-lecture li a.lecture-title', function() {
 //    alert('ok');
     var pos_lesson = parseInt($(this).children('span').text()) - 1;
+    
+    $('ul.list-lecture li').removeClass('is-choose');
+    $(this).parent().parent().parent().addClass('is-choose');
+    
     var pos_chapter = parseInt($(this).parent().parent().parent().parent().attr('data-order-chapter')) - 1;
     curent_lesson = pos_lesson;
     curent_chapter = pos_chapter;
-    
-    alert(curent_lesson + ' - ' + curent_chapter);
     
     if(course.list_chapter[curent_chapter].list_lesson[curent_lesson].path_video == ''){
         $('#source-video-mp4').attr('src', '');
@@ -156,7 +158,7 @@ $(document).on("click", 'ul.list-lecture li a.lecture-title', function() {
         $('#up-video').css('display', 'none');
         tinymce.get("desc-detail-lesson").setContent(course.list_chapter[curent_chapter].list_lesson[curent_lesson].desc);
     }
-    alert(pos_lesson + " - Chapter: " + curent_chapter);
+    
     return false;
 });
 
@@ -170,28 +172,11 @@ $('#add-desc').click(function(){
         lesson_desc = '';
         path_lesson_video = '';
         
-        toastr.options =
-        {
-          "closeButton": false,
-          "debug": false,
-          "newestOnTop": false,
-          "progressBar": true,
-          "positionClass": "toast-top-left",
-          "preventDuplicates": false,
-          "onclick": null,
-          "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "5000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        }
-        toastr.remove();
-        toastr.options.positionClass = "toast-top-left";
-        toastr.success('This is a Success Toast', 'Success');
-//        alert(lesson_desc);
+        var chapter = curent_chapter + 1;
+        var lesson = curent_lesson + 1;
+        var path_lesson = 'ul.list-lecture[data-order-chapter="' + chapter + '"] li[data-order-lesson = "' + lesson + '"]';
+        $(path_lesson).addClass('is-full-info');
+
     }else{
         toastr.options =
         {
@@ -203,9 +188,9 @@ $('#add-desc').click(function(){
           "preventDuplicates": false,
           "onclick": null,
           "showDuration": "300",
-          "hideDuration": "1000",
-          "timeOut": "5000",
-          "extendedTimeOut": "1000",
+          "hideDuration": "300",
+          "timeOut": "3000",
+          "extendedTimeOut": "3000",
           "showEasing": "swing",
           "hideEasing": "linear",
           "showMethod": "fadeIn",
@@ -385,18 +370,7 @@ $('button#save-course').click(function(){
             data: data, // Dữ liệu được truyền lên server
             dataType: 'text',
             success: function (data) {
-//                if(data == "Submitted"){
-//                    toastr.remove();
-//                    toastr.options.positionClass = "toast-top-left";
-//                    toastr.success('This course has just been added', 'Success!');
-//                }else{
-//                    toastr.remove();
-//                    toastr.options.positionClass = "toast-top-right";
-//                    toastr.error('This course has not just been added', 'Error!');
-//                }
                alert(data);
-                
-
             },
             // Phương thức này trả về lỗi xảy ra với ajax
             error: function (xhr, ajaxOptions, throwError) {

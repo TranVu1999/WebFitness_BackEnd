@@ -265,6 +265,7 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
+                                    <p id="test"></p>
                                     <div class="thumb">
                                         <div class="thumb-avatar" id="up-video">
                                             <i class="fa fa-upload"></i>
