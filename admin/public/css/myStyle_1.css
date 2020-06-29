@@ -1193,6 +1193,9 @@ ul.list-lesson li a.lesson-title{
     display: none;
 }
 /*End style box-modal-lesson*/
+.ms-sortable-list{
+    min-height: 40px;
+}
 /*End style course_detail*/
 
 /*Start style add-course*/

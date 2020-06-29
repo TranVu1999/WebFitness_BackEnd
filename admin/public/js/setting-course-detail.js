@@ -2,6 +2,27 @@ var course_add = new Course($('input#course_id').val() ,'', [], '', '', '');
 var course_edit = new Course($('input#course_id').val() ,'', [], '', '', '');
 var course_remove = new Course($('input#course_id').val() ,'', [], '', '', '');
 
+var current_lesson_id = -1;
+var current_chapter_id = -1;
+
+//Get course origin
+var course_origin = new Course($('input#course_id').val() ,'', [], '', '', '');
+var data = {};
+$.ajax({
+    url: '?mod=course&controller=detail&action=getInfoCourse',
+    method: "POST",
+    data: data, // Dữ liệu được truyền lên server
+    dataType: 'json',
+    success: function (data) {
+        course_origin = data;
+    },
+    error: function (xhr, ajaxOptions, throwError) {
+        alert(xhr.Status);
+        alert(throwError);
+    }
+});
+
+
 //Add Chapter
 $('form#add-chapter').submit(function(){
     var lst_chapter = $('#list-chapter .table-of-content>li');
@@ -18,7 +39,7 @@ $('form#add-chapter').submit(function(){
     }
 
     if(isAdd){
-        var chapter_str = '<li class="ms-list-item ui-sortable-handle" data-order-chapter="' + amountChapter + '">' +
+        var chapter_str = '<li class="ms-list-item ui-sortable-handle" data-order-chapter="' + amountChapter + '" data-chapter-id="-' + amountChapter + '">' +
                             '<div class="part-info">' +
                                 '<div class="part-title">Chapter ' + amountChapter + ': ' + chapter_title + '</div>' +
                                 '<span class="part-duration">0 lessons</span>' +
@@ -48,6 +69,8 @@ $('form#add-chapter').submit(function(){
         var chapter = new Chapter(-1, '', '', []);
         chapter.chapter_title = chapter_title;
         chapter.chapter_id = amountChapter;
+        chapter.chapter_order = amountChapter;
+        
         course_add.list_chapter.push(chapter);
         
     }else{
@@ -91,6 +114,9 @@ $(document).on("click", 'span.delete-lesson', function() {
 $(document).on("submit", 'form.add-lesson', function() {
     var isAdd = true;
     var order_chapter = $(this).attr('data-order-chapter');
+    var id_chapter = parseInt($(this).parent().parent().parent().attr('data-chapter-id'));
+    
+    
     var lesson_title = $('form input[data-order-chapter="' + order_chapter + '"]').val();
     
     var list_lesson = $('ul.list-lesson[data-order-chapter="' + order_chapter + '"] li');
@@ -104,12 +130,31 @@ $(document).on("submit", 'form.add-lesson', function() {
     }
     
     if(isAdd){
+        if(id_chapter > 0){
+            var chapter = new Chapter(-1, '', '', []);
+            chapter.chapter_id = id_chapter;
+            course_add.list_chapter.push(chapter);
+        }
+        var lesson = new Lesson();
+        lesson.lesson_title = lesson_title;
+        lesson.lesson_order = data_order_new_lesson;
+        lesson.lesson_desc = '';
+        lesson.path_video = '';
+
+        $.each(course_add.list_chapter, function( index, chapter ) {
+            if(chapter.chapter_id == order_chapter){
+                lesson.lesson_id = chapter.list_lesson.length;
+                chapter.list_lesson.push(lesson);
+            }
+        });
+        
+        
         $('div.notify_lesson[data-order-chapter="' + order_chapter + '"]').children('div').remove();
         
         var data_order_new_lesson = parseInt($('ul.list-lesson[data-order-chapter="' + order_chapter + '"]>li').length);
         var data_order_new_lesson = data_order_new_lesson;
 
-        $('ul.list-lesson[data-order-chapter="' + order_chapter + '"]').append('<li  class="ms-list-item" data-order-lesson="' + data_order_new_lesson + '">' +
+        $('ul.list-lesson[data-order-chapter="' + order_chapter + '"]').append('<li  class="ms-list-item" data-order-lesson="' + data_order_new_lesson + '" data-id = "' + lesson.lesson_id + '">' +
                                                                                     '<div class="lesson-item">' +
                                                                                         '<span class="delete-lesson lesson-mark far fa-times-circle text-danger">' +
                                                                                         '</span>' +
@@ -122,35 +167,12 @@ $(document).on("submit", 'form.add-lesson', function() {
                                                                                     '</div>' +
                                                                                 '</li>');
         $('form input[data-order-chapter="' + order_chapter + '"]').val('');
-        var lesson = new Lesson();
-        lesson.lesson_title = lesson_title;
-        lesson.lesson_order = data_order_new_lesson;
-        lesson.lesson_desc = '';
-        lesson.path_video = '';
         
-//        for(var i = 0; i < data_order_new_lesson; i++){
-//            if(course_add.list_chapter[i].chapter_id == order_chapter){
-//                course_add.list_chapter[i].list_lesson.push(chapter);
-//                alert(course_add.list_chapter[i].list_lesson.length);
-//            }
-//        }
-        
-//        course_add.list_chapter[0].list_lesson.push(lesson);
-//        alert(course_add.list_chapter[0].chapter_id);
-        
-        $.each(course_add.list_chapter, function( index, chapter ) {
-            if(chapter.chapter_id == order_chapter){
-                chapter.list_lesson.push(lesson);
-                alert(chapter.list_lesson.length);
-            }
-        });
     }else{
         $('div.notify_lesson[data-order-chapter="' + order_chapter + '"]').append('<div class="alert alert-danger alert-outline" role="alert">'+
                                                                                         '<strong>Error!</strong> This lesson already exists!'+
                                                                                     '</div>');
     }
-    
-    
     
     return false;
 });
@@ -161,28 +183,78 @@ $(document).on("click", 'ul.list-lesson li a', function() {
     $('ul.list-lesson li').removeClass('is-choose');
     $(this).parent().parent().parent().addClass('is-choose');
     var lesson_id = $(this).parent().parent().parent().attr('data-id');
-//    alert(lesson_id);
+    var chapter_id = parseInt($(this).parent().parent().parent().parent().parent().attr('data-chapter-id')) - 1;
+    var flag = true;
+    
+    alert(lesson_id + ' - ' + chapter_id);
+    
+    $.each(course_origin.list_chapter, function( index, chapter ) {
+        if(chapter.chapter_id === chapter_id){
+            $.each(chapter.list_lesson, function( index, lesson ) {
+                if(lesson.lesson_id === lesson_id){
+                    $('#thumb-video-lesson video').attr('src', lesson.lesson_video);
+                    $('#lesson-desc').html(lesson.lesson_detail);
+                    $('h1#lesson-title').text(lesson.lesson_title);
+                    flag = false;
+                }
+            });
+        }
+    });
     
     
-    var data = {lesson_id: lesson_id};
+    
+    if(flag){
+        $('#up-video').css('display', 'block');
+        $('#thumb-video-lesson video').css('display', 'none');
+    }else{
+        $('#up-video').css('display', 'none');
+        $('#thumb-video-lesson video').css('display', 'block');
+    }
+  
+    return false;
+});
+
+//Save course
+$('button#save-course').click(function(){
+    
+    var data = {course_add: JSON.stringify(course_add)};
     $.ajax({
-        url: '?mod=course&controller=detail&action=getInfoLesson',
+        url: '?mod=course&controller=detail&action=addLesson',
         method: "POST",
         data: data, // Dữ liệu được truyền lên server
-        dataType: 'json',
+        dataType: 'text',
         success: function (data) {
-            $('#thumb-video-lesson video').attr('src', data.LessonVideo);
-            $('#lesson-desc').html(data.LessonDetail);
+            alert(data);
         },
         error: function (xhr, ajaxOptions, throwError) {
             alert(xhr.Status);
             alert(throwError);
         }
     });
-   
+})
+
+
+//Open box edit lesson title
+$('h1#lesson-title').click(function(){
+    $(this).css('display', 'none');
+    $('form#edit-lesson-title').css('display', 'block');
+    $('form#edit-lesson-title input').focus();
+})
+
+//Edit lesson title
+$('form#edit-lesson-title').submit(function(){
+    $(this).css('display', 'none');
+    $('h1#lesson-title').text($('form#edit-lesson-title input').val());
+    $('h1#lesson-title').css('display', 'block');
+    $('button#add-desc').css('display', 'block');
     return false;
-});
+})
 
-
-
+//Open box lesson detail
+$('div#lesson-desc').click(function(){
+    $(this).css('display', 'none');
+    $('#edit-content-lesson').css('display', 'block');
+    tinymce.get("desc-detail-lesson").setContent($(this).html());
+    $('button#add-desc').css('display', 'block');
+})
 

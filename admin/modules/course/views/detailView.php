@@ -225,7 +225,6 @@
             <!-- Body Content Wrapper -->
             <div class="ms-content-wrapper">
                 <div class="row">
-
                     <div class="col-md-12">
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb pl-0">
@@ -234,128 +233,168 @@
                                 <li class="breadcrumb-item active" aria-current="page">Course Detail</li>
                             </ol>
                         </nav>
-
-
-
-                        <div class="ms-panel">
+                    </div>
+                    
+                    <div class="col-md-12">
+                        <div class="ms-panel ms-panel-fh">
                             <div class="ms-panel-header">
                                 <div class="d-flex-between-center">
                                     <h1 class="color-808080 fs-28"><?= $course->course_title ?></h1>
-                                    <input type="text" hidden value="<?= $course->course_id?>" id="course_id">
-                                    <div class="btn-control">
-                                        <button type="button" name="button" class="btn btn-primary  ms-graph-metrics" id="open-modal-course">
-                                            <i class="fa fa-eye"></i>
-                                            Show Course Parameters
-                                        </button>
-                                    </div>
+                                    <input type="text" hidden value="<?= $course->course_id ?>" id="course_id">
                                 </div>
                             </div>
 
                             <div class="ms-panel-body">
-                                <div class="row">
-                                    <div class="col-lg-8">
-                                        <div class="thumb" id="thumb-video-lesson">
-                                            <video controls >
-                                                <source src="<?= $course->list_chapter[0]->list_lesson[0]->lesson_video ?>" type="video/mp4">
-                                            </video>
-                                        </div>
-                                        <div class="lesson-desc">
-                                            <div class="lesson-title">
-                                                <div class="d-flex-between-center">
-                                                    <h1 class="color-808080 fs-24"><?= $course->list_chapter[0]->list_lesson[0]->lesson_title ?></h1>
-                                                </div>
-                                            </div>
-                                            <div class="lesson-content" id="lesson-desc">
-                                                <?= $course->list_chapter[0]->list_lesson[0]->lesson_detail ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div id="show-lecture">
-                                            <div class="outline-head">
-                                                <button class="btn" id="btn-toggle-ouline">
-                                                    <i class="fa fa-caret-right"></i>
-                                                </button>
-                                                <h3 class="text-center">MỤC LỤC</h3>
-                                            </div>
-                                            <div class="outline-body">
-                                                <form action="#" id="add-chapter" method="post">
-                                                    <div class="form-row">
-                                                        <div class="col-12">
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control mr-2" required="" placeholder="Add new chapter">
-                                                                <button type="submit" class="btn btn-outline-primary btn-add-chapter">Add Chapter</button>
-                                                            </div>
-                                                            <div id="notify_chapter"></div>
+                                <ul class="nav nav-tabs tabs-bordered d-flex nav-justified mb-4" role="tablist">
+                                    <li role="presentation"><a href="#tab1" aria-controls="tab1" class="active show" role="tab" data-toggle="tab"> Overview </a></li>
+                                    <li role="presentation"><a href="#tab2" aria-controls="tab2" role="tab" data-toggle="tab"> Profile </a></li>
+                                    <li role="presentation"><a href="#tab3" aria-controls="tab3" role="tab" data-toggle="tab"> Settings </a></li>
+                                </ul>
+                                <div class="tab-content">
+                                    <div role="tabpanel" class="tab-pane active show fade in" id="tab1">
+                                        <div class="ms-panel-body">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    
+                                                    <div class="thumb" id="thumb-video-lesson">
+                                                        <div class="thumb-avatar" id="up-video" style="display: none">
+                                                            <i class="fa fa-upload"></i>
+                                                            <input type="file" id="upload-video" name="upload-video">
+                                                        </div>
+                                                        
+                                                        <video controls >
+                                                            <source src="<?= $course->list_chapter[0]->list_lesson[0]->lesson_video ?>" type="video/mp4">
+                                                        </video>
+                                                    </div>
+                                                    
+                                                    <div class="lesson-desc">
+                                                        <div class="lesson-title">
+                                                            <h1 class="color-808080 fs-24" id="lesson-title"><?= $course->list_chapter[0]->list_lesson[0]->lesson_title ?></h1>
+                                                            
+                                                            <form action="#" method="post" id="edit-lesson-title" style="display: none">
+                                                                <div class="form-row">
+                                                                    <div class="col-12">
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control mr-2" required="" placeholder="<?= $course->list_chapter[0]->list_lesson[0]->lesson_title ?>"> 
+                                                                        </div>
+                                                                        <div id="notify-edit-lesson"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                            
+                                                        </div>
+                                                        <div class="lesson-content" id="lesson-desc">
+                                                            <?= $course->list_chapter[0]->list_lesson[0]->lesson_detail ?>
+                                                        </div>
+                                                        <div id="edit-content-lesson" style="display: none">
+                                                            <textarea id='desc-detail-lesson' class="tinymce"></textarea>
+                                                        </div>
+                                                         <div class="mt-5">
+                                                             <button type="button" id="add-desc" class="btn btn-outline-primary" style="display: none">Add Description</button>
                                                         </div>
                                                     </div>
-                                                </form>
+                                                </div>
                                                 
-                                                <div class="" id="list-chapter">
-                                                    <ul class="ms-list ms-sortable-list table-of-content">
-                                                        <?php
-                                                        $order_chapter = 0;
-                                                        foreach ($course->list_chapter as $chapter) {
-                                                            $order_chapter++;
-                                                            ?>
-                                                            <li class="ms-list-item" data-order-chapter="<?= $order_chapter ?>">
-                                                                <div class="part-info">
-                                                                    <div class="part-title">Chapter <?= $order_chapter ?>: <?= $chapter->chapter_title ?></div>
-                                                                    <span class="part-duration"><?= count($chapter->list_lesson) ?> lessons</span>
-                                                                    <span class="toggle-lecture"></span>
+                                                <div class="col-md-4">
+                                                    <div id="show-lecture">
+                                                        <div class="outline-head">
+                                                            <button class="btn" id="btn-toggle-ouline">
+                                                                <i class="fa fa-caret-right"></i>
+                                                            </button>
+                                                            <h3 class="text-center">MỤC LỤC</h3>
+                                                        </div>
+                                                        <div class="outline-body">
+                                                            <form action="#" id="add-chapter" method="post">
+                                                                <div class="form-row">
+                                                                    <div class="col-12">
+                                                                        <div class="input-group">
+                                                                            <input type="text" class="form-control mr-2" required="" placeholder="Add new chapter">
+                                                                            <button type="submit" class="btn btn-outline-primary btn-add-chapter">Add Chapter</button>
+                                                                        </div>
+                                                                        <div id="notify_chapter"></div>
+                                                                    </div>
                                                                 </div>
+                                                            </form>
 
-                                                                <ul class="list-lesson ms-list ms-sortable-list" data-order-chapter="<?= $order_chapter ?>">
-                                                                    <li>
-                                                                        <form action="#" class="add-lesson" method="post" data-order-chapter="<?= $order_chapter ?>">
-                                                                            <div class="form-row">
-                                                                                <div class="col-12">
-                                                                                    <div class="input-group">
-                                                                                        <input type="text" class="form-control mr-2 lesson-title" required="" placeholder="Add new lesson" data-order-chapter="<?= $order_chapter ?>">
-                                                                                        <button type="submit" class="btn btn-outline-primary btn-add-chapter btn-add-lesson">Add Lesson</button>
-
-                                                                                    </div>
-                                                                                    <div class="notify_lesson" data-order-chapter="<?= $order_chapter ?>"></div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </form>
-                                                                    </li>
+                                                            <div class="" id="list-chapter">
+                                                                <ul class="ms-list ms-sortable-list table-of-content">
                                                                     <?php
-                                                                    $order_lesson = 0;
-                                                                    foreach ($chapter->list_lesson as $lesson) {
-                                                                        $order_lesson++;
+                                                                    $order_chapter = 0;
+                                                                    foreach ($course->list_chapter as $chapter) {
+                                                                        $order_chapter++;
                                                                         ?>
-                                                                        <li  class="ms-list-item" data-order-lesson="<?= $order_lesson?>" data-id="<?=$lesson->lesson_id?>">
-                                                                            <div class="lesson-item">
-                                                                                <span class="delete-lesson lesson-mark far fa-times-circle text-danger">
-                                                                                </span>
-                                                                                <div class="lesson-info">
-                                                                                    <a href="#" >Lesson: <span><?= $order_lesson?></span>: <span class="lesson-title"><?= $lesson->lesson_title?></span></a>
-                                                                                    <div class="lesson-duration">
-                                                                                        <span class="far fa-play-circle"></span> 8:00
-                                                                                    </div>
-                                                                                </div>
+                                                                        <li class="ms-list-item" data-order-chapter="<?= $chapter->chapter_order ?>" data-chapter-id="<?= $chapter->chapter_id ?>">
+                                                                            <div class="part-info">
+                                                                                <div class="part-title">Chapter <?= $order_chapter ?>: <?= $chapter->chapter_title ?></div>
+                                                                                <span class="part-duration"><?= count($chapter->list_lesson) ?> lessons</span>
+                                                                                <span class="toggle-lecture"></span>
                                                                             </div>
-                                                                        </li>
 
+                                                                            <ul class="list-lesson ms-list ms-sortable-list" data-order-chapter="<?= $order_chapter ?>">
+                                                                                <li>
+                                                                                    <form action="#" class="add-lesson" method="post" data-order-chapter="<?= $order_chapter ?>">
+                                                                                        <div class="form-row">
+                                                                                            <div class="col-12">
+                                                                                                <div class="input-group">
+                                                                                                    <input type="text" class="form-control mr-2 lesson-title" required="" placeholder="Add new lesson" data-order-chapter="<?= $order_chapter ?>">
+                                                                                                    <button type="submit" class="btn btn-outline-primary btn-add-chapter btn-add-lesson">Add Lesson</button>
+
+                                                                                                </div>
+                                                                                                <div class="notify_lesson" data-order-chapter="<?= $order_chapter ?>"></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </li>
+                                                                                <?php
+                                                                                $order_lesson = 0;
+                                                                                foreach ($chapter->list_lesson as $lesson) {
+                                                                                    $order_lesson++;
+                                                                                    ?>
+                                                                                    <li  class="ms-list-item" data-order-lesson="<?= $order_lesson ?>" data-id="<?= $lesson->lesson_id ?>">
+                                                                                        <div class="lesson-item">
+                                                                                            <span class="delete-lesson lesson-mark far fa-times-circle text-danger">
+                                                                                            </span>
+                                                                                            <div class="lesson-info">
+                                                                                                <a href="#" >Lesson: <span><?= $order_lesson ?></span>: <span class="lesson-title"><?= $lesson->lesson_title ?></span></a>
+                                                                                                <div class="lesson-duration">
+                                                                                                    <span class="far fa-play-circle"></span> 8:00
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </li>
+
+                                                                                    <?php
+                                                                                }
+                                                                                ?>
+                                                                            </ul>
+                                                                        </li>
                                                                         <?php
                                                                     }
                                                                     ?>
                                                                 </ul>
-                                                            </li>
-                                                            <?php
-                                                        }
-                                                        ?>
-
-
-                                                    </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+                                    
+                                    <div role="tabpanel" class="tab-pane fade" id="tab2">
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna nunc, congue nec laoreet sed, maximus non massa. Fusce vestibulum vel risus vitae tincidunt. </p>
+                                        <p> Cras egestas nisi vel tempor dignissim. Ut condimentum iaculis ex nec ornare. Vivamus sit amet elementum ante. Fusce eget erat volutpat </p>
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna nunc, congue nec laoreet sed, maximus non massa. Fusce vestibulum vel risus vitae tincidunt. </p>
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab3">
+                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam urna nunc, congue nec laoreet sed, maximus non massa. Fusce vestibulum vel risus vitae tincidunt. </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    
+                    <div class="col-md-12 text-center" >
+                        <button class="btn btn-success" id="save-course">Save</button>
                     </div>
                 </div>
             </div>
@@ -385,6 +424,13 @@
         <script src="public/js/perfect-scrollbar.js"></script>
         <script src="public/js/jquery-ui.min.js"></script>
         <!-- Global Required Scripts End -->
+         <!-- Editor -->
+        <script src="public/js/vendor.bundle.base.js"></script>
+        <script src="public/js/vendor.bundle.addons.js"></script>
+        <script src="public/vendors/tinymce/tinymce.min.js"></script>
+        <script src="public/vendors/tinymce/themes/modern/theme.js"></script>
+        <script src="public/vendors/summernote/dist/summernote-bs4.min.js"></script>
+        <script src="public/js/editorDemo.js"></script>
 
         <!-- Greendash core JavaScript -->
         <script src="public/js/framework.js"></script>

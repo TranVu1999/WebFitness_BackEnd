@@ -265,7 +265,6 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-8">
-                                    <p id="test"></p>
                                     <div class="thumb">
                                         <div class="thumb-avatar" id="up-video">
                                             <i class="fa fa-upload"></i>
@@ -276,7 +275,6 @@
                                             <label for="upload-video" id="change-thumb-video" class="btn btn-danger"><i class="fa fa-retweet"></i> Change Video</label>
                                             <video controls  src="" id="source-video-mp4"></video>
                                         </div>
-                                        
                                     </div>
 
                                     <div class="lesson-desc">

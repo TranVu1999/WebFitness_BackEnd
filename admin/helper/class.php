@@ -8,7 +8,7 @@ class Lesson{
 }
 
 class Chapter{
-    
+    public $chapter_id = 0;
     public $chapter_title = '';
     public $chapter_order = 0;
     

@@ -1,5 +1,6 @@
 class Lesson{   
-    constructor(lesson_title, order, desc, path_video) {
+    constructor(lesson_id, lesson_title, order, desc, path_video) {
+        this.lesson_id = lesson_id;
        this.lesson_title = lesson_title;
        this.order = order;
        this.desc = desc;

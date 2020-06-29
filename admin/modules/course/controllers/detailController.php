@@ -3,6 +3,7 @@
 // Tất cả các action được lưu trong này
 // hàm này sẽ được chạy lên trước rồi mới chạy tới mấy hàm sau
 function construct() {
+    load_model('addCourse');
     load_model('detail');
 }
 
@@ -25,6 +26,7 @@ function indexAction() {
         $chapter = new Chapter();
         $chapter->chapter_order = (int)$data_chapter['Order'];
         $chapter->chapter_title = $data_chapter['TableOfContentTitle'];
+        $chapter->chapter_id = $data_chapter['TableOfContentId'];
         
         $data_lst_lesson = get_lesson_by_table_of_content_id($data_chapter['TableOfContentId']);
         foreach($data_lst_lesson as $data_lesson){
@@ -49,4 +51,50 @@ function getInfoLessonAction() {
     $data_lesson = get_lesson_by_id($lesson_id);
     
     echo json_encode($data_lesson);
+}
+
+function getInfoCourseAction(){
+    $data_course = get_course_by_id(1);
+    $data_table_of_content = get_table_of_content_by_course_id(1);
+    
+    $course = new Course();
+    $course->course_id = $data_course['CourseId'];
+    $course->course_title = $data_course['CourseTitle'];
+    $course->course_avatar = $data_course['CourseAvatar'];
+    $course->course_desc = $data_course['CourseDesc'];
+    $course->course_detail = $data_course['CourseDetail'];
+    $course->course_alias = $data_course['CourseAlias'];
+    $course->course_price = $data_course['CoursePrice'];
+    
+    foreach($data_table_of_content as $data_chapter){
+        $chapter = new Chapter();
+        $chapter->chapter_order = (int)$data_chapter['Order'];
+        $chapter->chapter_title = $data_chapter['TableOfContentTitle'];
+        $chapter->chapter_id = $data_chapter['TableOfContentId'];
+        
+        $data_lst_lesson = get_lesson_by_table_of_content_id($data_chapter['TableOfContentId']);
+        foreach($data_lst_lesson as $data_lesson){
+            $lesson = new Lesson();
+            $lesson->lesson_id = $data_lesson['LessonId'];
+            $lesson->lesson_detail = $data_lesson['LessonDetail'];
+            $lesson->lesson_title = $data_lesson['LessonTitle'];
+            $lesson->lesson_video = $data_lesson['LessonVideo'];
+            
+            $chapter->addLesson($lesson);
+        }
+        
+        $course->addChapter($chapter);
+    }
+    
+    echo json_encode($course);
+}
+
+function addLessonAction(){
+    $course_info = $_POST['course_add'];
+    $course = json_decode($course_info);
+    
+    
+    
+    
+    echo json_encode($course);
 }

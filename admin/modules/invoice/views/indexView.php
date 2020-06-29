@@ -243,6 +243,59 @@
                             </ol>
                         </nav>
                     </div>
+                    
+                    <div class="col-xl-3 col-md-6">
+                        <div class="ms-card card-gradient-success ms-widget ms-infographics-widget">
+                            <div class="ms-card-body media">
+                                <div class="media-body">
+                                    <h6>Total Orders</h6>
+                                    <p class="ms-card-change"> <i class="material-icons">arrow_upward</i> 4567</p>
+                                    <p class="fs-12">48% From Last 24 Hours</p>
+                                </div>
+                            </div>
+                            <i class="flaticon-archive"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="ms-card card-gradient-secondary ms-widget ms-infographics-widget">
+                            <div class="ms-card-body media">
+                                <div class="media-body">
+                                    <h6>Compeleted Orders</h6>
+                                    <p class="ms-card-change"> $80,950</p>
+                                    <p class="fs-12">2% Decreased from last day</p>
+                                </div>
+                            </div>
+                            <i class="flaticon-supermarket"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="ms-card card-gradient-warning ms-widget ms-infographics-widget">
+                            <div class="ms-card-body media">
+                                <div class="media-body">
+                                    <h6>Pending Orders</h6>
+                                    <p class="ms-card-change"> <i class="material-icons">arrow_upward</i> 4567</p>
+                                    <p class="fs-12">48% From Last 24 Hours</p>
+                                </div>
+                            </div>
+                            <i class="flaticon-reuse"></i>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-md-6">
+                        <div class="ms-card card-gradient-info ms-widget ms-infographics-widget">
+                            <div class="ms-card-body pos media">
+                                <div class="media-body">
+                                    <h6>Total Products</h6>
+                                    <p class="ms-card-change "> $80,950</p>
+                                    <p class="fs-12">2% Decreased from last week</p>
+                                </div>
+                            </div>
+                            <i class="fas fa-cannabis "></i>
+                        </div>
+                    </div>
+
                     <div class="col-md-12">
                         <div class="ms-panel">
                             <div class="ms-panel-header">
