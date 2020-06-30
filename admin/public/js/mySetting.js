@@ -107,25 +107,25 @@ if ($('[data-focus="edit-post-detail"]').length) {
 
 
 // Get avatar
-document.getElementById('upload-avatar').onchange = function (evt) {
-    var tgt = evt.target || window.event.srcElement,
-        files = tgt.files;
-
-    // FileReader support
-    if (FileReader && files && files.length) {
-        var fr = new FileReader();
-        fr.onload = function () {
-            document.getElementById('post-ava-upload').src = fr.result;
-        }
-        fr.readAsDataURL(files[0]);
-    }
-
-    // Not supported
-    else {
-        // fallback -- perhaps submit the input to an iframe and temporarily store
-        // them on the server until the user's session ends.
-    }
-}
+//document.getElementById('upload-avatar').onchange = function (evt) {
+//    var tgt = evt.target || window.event.srcElement,
+//        files = tgt.files;
+//
+//    // FileReader support
+//    if (FileReader && files && files.length) {
+//        var fr = new FileReader();
+//        fr.onload = function () {
+//            document.getElementById('post-ava-upload').src = fr.result;
+//        }
+//        fr.readAsDataURL(files[0]);
+//    }
+//
+//    // Not supported
+//    else {
+//        // fallback -- perhaps submit the input to an iframe and temporarily store
+//        // them on the server until the user's session ends.
+//    }
+//}
 
 // Get slide image
 $('input.input-slide').change(function(e){
