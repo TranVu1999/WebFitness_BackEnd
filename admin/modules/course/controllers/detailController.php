@@ -93,8 +93,18 @@ function addLessonAction(){
     $course_info = $_POST['course_add'];
     $course = json_decode($course_info);
     
-    
-    
+    foreach($course->list_chapter as $chapter){
+        if((int)$chapter->chapter_id < 0){
+           add_table_of_content($chapter->chapter_title, $chapter->chapter_order, $course->course_id); 
+           $chapter->chapter_id = - $chapter->chapter_id;
+        }
+        
+        foreach($chapter->list_lesson as $lesson){
+            $lesson_order = (int)get_amount_lesson_by_table_of_content($chapter->chapter_id) + 1;
+            add_lesson($lesson->lesson_title, $lesson->lesson_desc, $lesson_order, $chapter->chapter_id, $lesson->path_video);
+        }
+    }
     
     echo json_encode($course);
+//    echo (int)$course->list_chapter[0]->chapter_id + 1;
 }

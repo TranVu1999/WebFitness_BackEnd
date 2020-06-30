@@ -4,6 +4,7 @@ var course_remove = new Course($('input#course_id').val() ,'', [], '', '', '');
 
 var current_lesson_id = -1;
 var current_chapter_id = -1;
+var path_lesson_video = '';
 
 //Get course origin
 var course_origin = new Course($('input#course_id').val() ,'', [], '', '', '');
@@ -68,7 +69,7 @@ $('form#add-chapter').submit(function(){
         
         var chapter = new Chapter(-1, '', '', []);
         chapter.chapter_title = chapter_title;
-        chapter.chapter_id = amountChapter;
+        chapter.chapter_id = -amountChapter;
         chapter.chapter_order = amountChapter;
         
         course_add.list_chapter.push(chapter);
@@ -115,7 +116,7 @@ $(document).on("submit", 'form.add-lesson', function() {
     var isAdd = true;
     var order_chapter = $(this).attr('data-order-chapter');
     var id_chapter = parseInt($(this).parent().parent().parent().attr('data-chapter-id'));
-    
+    alert(id_chapter);
     
     var lesson_title = $('form input[data-order-chapter="' + order_chapter + '"]').val();
     
@@ -135,16 +136,18 @@ $(document).on("submit", 'form.add-lesson', function() {
             chapter.chapter_id = id_chapter;
             course_add.list_chapter.push(chapter);
         }
+        
         var lesson = new Lesson();
         lesson.lesson_title = lesson_title;
         lesson.lesson_order = data_order_new_lesson;
-        lesson.lesson_desc = '';
+        lesson.lesson_desc = 'Empty..............';
         lesson.path_video = '';
 
         $.each(course_add.list_chapter, function( index, chapter ) {
-            if(chapter.chapter_id == order_chapter){
+            if(chapter.chapter_id == id_chapter){
                 lesson.lesson_id = chapter.list_lesson.length;
                 chapter.list_lesson.push(lesson);
+                console.log(course_add);
             }
         });
         
@@ -174,48 +177,153 @@ $(document).on("submit", 'form.add-lesson', function() {
                                                                                     '</div>');
     }
     
+    
+    
     return false;
 });
 
 //Choose Lesson
 $(document).on("click", 'ul.list-lesson li a', function() {
-   
+    var lesson_title = $(this).children('span.lesson-title').text();
     $('ul.list-lesson li').removeClass('is-choose');
     $(this).parent().parent().parent().addClass('is-choose');
-    var lesson_id = $(this).parent().parent().parent().attr('data-id');
-    var chapter_id = parseInt($(this).parent().parent().parent().parent().parent().attr('data-chapter-id')) - 1;
+    current_lesson_id = $(this).parent().parent().parent().attr('data-id');
+    current_chapter_id = parseInt($(this).parent().parent().parent().parent().parent().attr('data-chapter-id'));
     var flag = true;
     
-    alert(lesson_id + ' - ' + chapter_id);
+//    alert(lesson_id + ' - ' + chapter_id);
+//    console.log(course_origin);
     
     $.each(course_origin.list_chapter, function( index, chapter ) {
-        if(chapter.chapter_id === chapter_id){
+        if(chapter.chapter_id == current_chapter_id){
             $.each(chapter.list_lesson, function( index, lesson ) {
-                if(lesson.lesson_id === lesson_id){
+                if(lesson.lesson_id == current_lesson_id){
                     $('#thumb-video-lesson video').attr('src', lesson.lesson_video);
                     $('#lesson-desc').html(lesson.lesson_detail);
                     $('h1#lesson-title').text(lesson.lesson_title);
+//                    alert(lesson.lesson_title);
                     flag = false;
                 }
             });
         }
     });
     
-    
-    
     if(flag){
         $('#up-video').css('display', 'block');
         $('#thumb-video-lesson video').css('display', 'none');
+        
+        $('div#lesson-desc').css('display', 'none');
+        $('#edit-content-lesson').css('display', 'block');
+        tinymce.get("desc-detail-lesson").setContent('Empty...........');
+        
+        $('h1#lesson-title').text(lesson_title);
+        
+        $('form#edit-lesson-title input').attr('placeholder', lesson_title);
+        $('button#add-desc').css('display', 'block');
+       
     }else{
         $('#up-video').css('display', 'none');
         $('#thumb-video-lesson video').css('display', 'block');
+        
+        $('div#lesson-desc').css('display', 'block');
+        $('#edit-content-lesson').css('display', 'none');
+        
     }
   
     return false;
 });
 
+
+//Add Desc to lesson
+$('#add-desc').click(function(){
+    if(current_lesson_id != -1 && current_chapter_id != -1){
+        alert(current_lesson_id + ' - ' + current_chapter_id);
+        $.each(course_add.list_chapter, function( index, chapter ) {
+            if(chapter.chapter_id == current_chapter_id){
+                $.each(chapter.list_lesson, function( index, lesson ) {
+                    if(lesson.lesson_id == current_lesson_id){
+                        lesson.lesson_desc = tinymce.get("desc-detail-lesson").getContent();
+                        lesson.path_video = path_lesson_video;
+                    }
+                });
+            }
+        });
+        
+        lesson_desc = '';
+        path_lesson_video = '';
+        
+        var chapter = current_chapter_id + 1;
+        var lesson = current_lesson_id + 1;
+        
+//        var path_lesson = 'ul.list-lecture[data-order-chapter="' + chapter + '"] li[data-order-lesson = "' + lesson + '"]';  
+//        $(path_lesson).addClass('is-full-info');
+        
+    }else{
+        toastr.options =
+        {
+          "closeButton": false,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": true,
+          "positionClass": "toast-top-left",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "300",
+          "timeOut": "3000",
+          "extendedTimeOut": "3000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+        toastr.remove();
+        toastr.options.positionClass = "toast-top-right";
+        toastr.error('You have to choose lesson', 'Error!');
+    }    
+})
+
+//Upload video to lesson
+$('input#upload-video').change(function(event){
+    var name_video = event.target.files[0].name;
+//    alert(course_origin.course_title);
+    
+    var course_title_format = change_alias(course_origin.course_title).split(' ').join('_');
+    course_title_format.split(' ').join('_');
+    var path_video = 'public/img/course/' + course_title_format + '/videos/' + name_video;
+    
+//    alert(path_vieo);
+    path_lesson_video = path_video;
+    alert(path_lesson_video);
+    
+    $('#thumb-video-lesson video source').attr('src', path_video);
+//    // $('#test').attr('src', path_video);
+    $('#thumb-video-lesson video').css('display', 'block');
+//    // alert(chapter_title_format)
+    $('#up-video').css('display', 'none');
+    
+});
+
+function change_alias(alias) {
+    var str = alias;
+    str = str.toLowerCase();
+    str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+    str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+    str = str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+    str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+    str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+    str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+    str = str.replace(/đ/g,"d");
+    str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g," ");
+    str = str.replace(/ + /g," ");
+    str = str.trim(); 
+    return str;
+}
+
 //Save course
 $('button#save-course').click(function(){
+    
+    
     
     var data = {course_add: JSON.stringify(course_add)};
     $.ajax({
@@ -232,7 +340,6 @@ $('button#save-course').click(function(){
         }
     });
 })
-
 
 //Open box edit lesson title
 $('h1#lesson-title').click(function(){

@@ -40,4 +40,14 @@ function get_lesson_by_id($lesson_id){
     $results = $getResuld -> fetchAll(PDO::FETCH_ASSOC);
     return $results[0];
 }
+
+function get_amount_lesson_by_table_of_content($chapter_id){
+    global $conn;
+    $strquery = "SELECT COUNT(*) AS AmountRow FROM dbo.Lesson WHERE TableOfContentId = $chapter_id";
+
+    $getResuld = $conn->prepare($strquery);
+    $getResuld->execute();
+    $results = $getResuld -> fetchAll(PDO::FETCH_ASSOC);
+    return $results[0]['AmountRow'];
+}
 ?>

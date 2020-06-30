@@ -13,7 +13,6 @@
         <!-- Iconic Fonts -->
         <link href="public/vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="public/vendors/iconic-fonts/flat-icons/flaticon.css">
         <!-- Bootstrap core CSS -->
         <link href="public/css/bootstrap.min.css" rel="stylesheet">
         <!-- jQuery UI -->
