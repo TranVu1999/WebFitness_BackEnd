@@ -22,6 +22,7 @@
         <link rel="stylesheet" href="public/vendors/css/vendor.bundle.base.css">
         <link rel="stylesheet" href="public/vendors/css/vendor.bundle.addons.css">
         <link rel="stylesheet" href="public/css/myStyle.css">
+        <link rel="stylesheet" href="public/css/mySlide.css">
         <!-- Favicon -->
         <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
     </head>
@@ -49,7 +50,7 @@
         <main class="body-content">
 
             <?php
-                get_template_part('navigation-bar');
+            get_template_part('navigation-bar');
             ?>
 
             <!-- Body Wrapper -->
@@ -60,10 +61,62 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb pl-0">
                                 <li class="breadcrumb-item"><a href="#"><i class="material-icons">home</i> Home</a></li>
-
-                                <li class="breadcrumb-item active" aria-current="page">Add Product</li>
+                                <li class="breadcrumb-item active" aria-current="page">Add Product Category</li>
                             </ol>
                         </nav>
+                    </div>
+
+                    <div class="col-md-12 col-xl-12">
+                        <div class="ms-panel">
+                            <div class="ms-panel-header">
+                                <h2>Slide Image</h2>
+                            </div>
+                            <div class="ms-panel-body">
+                                <div id="slide">
+                                    <div id="slide-thumb">
+                                        <img src="public/img/upload.PNG">
+                                    </div>
+                                    <div id="slide-item">
+                                        <ul>
+                                            <li class="active">
+                                                <img src="public/img/upload.PNG">
+                                            </li>
+                                            <li>
+                                                <img src="public/img/upload.PNG">
+                                            </li>
+                                            <li >
+                                                <img src="public/img/upload.PNG">
+                                            </li>
+                                            <li >
+                                                <img src="public/img/upload.PNG">
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div id="slide-banner">
+                                    <ul>
+                                        <li class="btn-prev">
+                                            <i class="fa fa-angle-left"></i>
+                                        </li>
+                                        <?php
+                                        $amount_banner = count($data_list_banner);
+                                        for ($i = 0; $i < $amount_banner; $i++) {
+                                            ?>
+                                            <li class="banner-item<?php if ($i == 0) echo " first-item active-item" ?>" data-id="<?= $data_list_banner[$i]['BannerId'] ?>">
+                                                <img src="<?= $data_list_banner[$i]['BannerPicture'] ?>">
+                                            </li>
+                                            <?php
+                                        }
+                                        ?>
+
+                                        <li class="btn-next">
+                                            <i class="fa fa-angle-right"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="col-md-12 col-xl-6">
@@ -105,32 +158,27 @@
                         <div class="ms-panel ms-panel-fh">
 
                             <div class="ms-panel-body">
-                                <form class="needs-validation clearfix" novalidate="" id="form-product-cate">
-                                    <div class="form-row">
-                                        <div class="col-xl-12 col-md-12 ">
-                                            <label for="validationCustom10">Product Category Name</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" id="product-cate-title" placeholder="Product name" required="">
-                                            </div>
+                                <div class="form-row">
+                                    <div class="col-xl-12 col-md-12 ">
+                                        <label for="validationCustom10">Product Category Name</label>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" id="product-cate-title" placeholder="Product name" required="">
                                         </div>
-
-                                        <div class="col-md-12">
-                                            <label for="validationCustom12">Description</label>
-                                            <div class="input-group">
-                                                <textarea rows="5" id="product-cate-desc" class="form-control" required=""></textarea>
-
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-12">
-                                            <button class="btn btn-dark mr-2  ms-graph-metrics">Delete</button>
-                                            <button class="btn btn-primary " type="submit">Save</button>
-                                        </div>
-
                                     </div>
 
+                                    <div class="col-md-12">
+                                        <label for="validationCustom12">Description</label>
+                                        <div class="input-group">
+                                            <textarea rows="5" id="product-cate-desc" class="form-control" required=""></textarea>
 
-                                </form>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <button class="btn btn-dark mr-2  ms-graph-metrics">Delete</button>
+                                        <button class="btn btn-primary " id="save-prod-cate">Save</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
