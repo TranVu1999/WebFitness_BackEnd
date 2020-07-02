@@ -27,4 +27,21 @@ class Course{
     }
 }
 
+class ProductCate{   
+    constructor(pro_cate_id, pro_cate_title, pro_cate_avatar, pro_cate_desc) {
+        this.pro_cate_id = pro_cate_id;
+        this.pro_cate_title = pro_cate_title;
+        this.pro_cate_avatar = pro_cate_avatar;
+        this.pro_cate_desc = pro_cate_desc;
+    }
+}
+
+class Banner{   
+    constructor(banner_id, banner_url, banner_address) {
+        this.banner_id = banner_id;
+        this.banner_url = banner_url;
+        this.banner_address = banner_address;
+    }
+}
+
 

@@ -71,6 +71,7 @@ $('#slide #slide-item ul li').click(function(){
 
 var pro_cate_title = '';
 var pro_cate_desc = '';
+var path_img = '';
 
 //Get product cate title
 $('input#product-cate-title').blur(function(){
@@ -106,15 +107,67 @@ $('input#upload-avatar').change(function(event){
         $('#notify_upload_avatar').html('');
         
         var name_file = event.target.files[event.target.files.length - 1].name;
-        var path_img = 'public/img/product_cate/' + name_file;
-//        alert(event.target.files.length)
+        path_img = 'public/img/product_cate/' + name_file;
+        
         $('img#post-ava-upload').attr('src', path_img);
-//        alert(name_file);
+
     }  
 })
 
 //Save Product Cate
 $('#save-prod-cate').click(function(){
-    alert('submit');
+    var isAdd = true;
+    if(pro_cate_title === ''){
+        $('#notify_prod_cate_title').html('<div class="alert alert-danger alert-outline" role="alert">'+
+                '<strong>Error!</strong> You have to enter product cate name!'+
+              '</div>');
+        isAdd = false;
+    }
+    
+    if(path_img === ''){
+        $('#notify_upload_avatar').html('<div class="alert alert-danger alert-outline" role="alert">'+
+                '<strong>Error!</strong> You have to enter product cate name!'+
+              '</div>'); 
+        isAdd = false;
+    }
+    
+    if(pro_cate_desc === ''){
+        $('#notify_prod_cate_desc').html('<div class="alert alert-danger alert-outline" role="alert">'+
+                '<strong>Error!</strong> You have to enter product cate description!'+
+              '</div>'); 
+        isAdd = false;
+    }
+    
+    if(isAdd){
+        var prod_cate = new ProductCate('1', pro_cate_title, path_img, pro_cate_desc);
+        var lst_banner = [];
+        var banner_address = change_alias(pro_cate_title).split(' ').join('_')
+
+
+        var elm_show_items = $('#slide #slide-item ul li');
+        var length = elm_show_items.length;
+        for(var i = 0; i < length; i++){
+            var banner = new Banner(elm_show_items.eq(i).attr('data-id'), elm_show_items.eq(i).children('img').attr('src'), 'banner_' + banner_address);
+            lst_banner.push(banner);
+        }
+
+        var data = {prod_cate: JSON.stringify(prod_cate), lst_banner: JSON.stringify(lst_banner)};
+        $.ajax({
+            url: '?mod=product-category&controller=add&action=addProductCategory',
+            method: "POST",
+            data: data, // Dữ liệu được truyền lên server
+            dataType: 'text',
+            success: function (data) {
+               alert(data);
+            },
+            // Phương thức này trả về lỗi xảy ra với ajax
+            error: function (xhr, ajaxOptions, throwError) {
+                // Lỗi 404: đường dẫn ko tìm được
+                alert(xhr.Status);
+                alert(throwError);
+            }
+        });
+    }
+    
 })
 

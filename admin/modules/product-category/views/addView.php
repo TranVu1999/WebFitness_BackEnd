@@ -164,6 +164,7 @@
                                         <div class="input-group">
                                             <input type="text" class="form-control" id="product-cate-title" placeholder="Product name" required="">
                                         </div>
+                                        <div id="notify_prod_cate_title" class="mt-3"></div>
                                     </div>
 
                                     <div class="col-md-12">
@@ -172,6 +173,7 @@
                                             <textarea rows="5" id="product-cate-desc" class="form-control" required=""></textarea>
 
                                         </div>
+                                        <div id="notify_prod_cate_desc" class="mt-3"></div>
                                     </div>
 
                                     <div class="col-md-12">
@@ -236,6 +238,7 @@
         <!-- My Setting -->
         <script src="public/js/mySetting.js"></script>
         <script src="public/js/helper.js"></script>
+        <script src="public/js/class.js"></script>
         <script src="public/js/setting_add_proCate.js"></script>
 
     </body>
