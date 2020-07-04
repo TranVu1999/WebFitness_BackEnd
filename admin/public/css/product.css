@@ -1,0 +1,29 @@
+.checkbox-wrap{
+    display: block;
+    height: 26px;
+    width: 26px;
+    border-radius: 50%;
+    border: 1px solid transparent;
+    position: relative;
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+.checkbox-wrap input.hide{
+    display: none;
+}
+
+.checkbox-wrap i.my-checkbox-check{
+    display: none;
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+}
+.checkbox-wrap i.show{
+    display: block;
+}
+
