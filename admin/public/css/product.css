@@ -27,3 +27,6 @@
     display: block;
 }
 
+#amount-box{
+    display: none;
+}

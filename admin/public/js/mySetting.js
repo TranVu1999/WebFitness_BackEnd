@@ -128,24 +128,24 @@ if ($('[data-focus="edit-post-detail"]').length) {
 //}
 
 // Get slide image
-$('input.input-slide').change(function(e){
-    var index = $(this).attr('data-thumb-slide');
-    // alert();
-    readURL(this, index);
-})
-
-function readURL(input, index) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            var path = 'img[data-thumb-slide="' + index + '"]';
-            $(path).attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
+//$('input.input-slide').change(function(e){
+//    var index = $(this).attr('data-thumb-slide');
+//    // alert();
+//    readURL(this, index);
+//})
+//
+//function readURL(input, index) {
+//    if (input.files && input.files[0]) {
+//        var reader = new FileReader();
+//
+//        reader.onload = function (e) {
+//            var path = 'img[data-thumb-slide="' + index + '"]';
+//            $(path).attr('src', e.target.result);
+//        }
+//
+//        reader.readAsDataURL(input.files[0]);
+//    }
+//}
 
 // == Get Content textarea
 $('#view').click(function(){

@@ -10,6 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <title>Admin - Product Add</title>
+        <base href="http://localhost:8080/unitop/back-end/lesson/WebFitness/WebFitness_BackEnd/admin/" target="_blank">
         <!-- Iconic Fonts -->
         <link href="public/vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -21,6 +22,7 @@
         <link href="public/css/sweetalert2.min.css" rel="stylesheet">
 
         <!-- Slide -->
+        <link href="public/css/toastr.min.css" rel="stylesheet">
 
         <!-- Greendash styles -->
         <link href="public/css/style.css" rel="stylesheet">
@@ -187,17 +189,19 @@
                                         <span class="sr-only">Next</span>
                                     </a>
                                 </div>
+                                <div id="notify-upload-slide" class="mt-3"></div>
                             </div>
                             
                             <div class="ms-panel-header">
                                 <h1 class="fs-28 color-808080">Avatar</h1>
                             </div>
                             <div class="ms-panel-body">
-                                <div class="thumb-avatar" id="avatar-post">
-                                    <img src="" alt="" id="post-ava-upload">
+                                <div class="thumb-avatar" id="prod-avatar">
+                                    <img src="" alt="" id="prod-ava-upload">
                                     <i class="fa fa-upload"></i>
                                     <input type="file" id="upload-avatar">
                                 </div>
+                                <div id="notify-upload-avatar" class="mt-3"></div>
                             </div>
                         </div>
                     </div>
@@ -208,17 +212,17 @@
                                 <form class="needs-validation clearfix" novalidate="">
                                     <div class="form-row">
                                         <div class="col-xl-12 col-md-12 ">
-                                            <label for="validationCustom06">Product Title</label>
+                                            <label for="product-title">Product Title</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="validationCustom08" required>
-                                                <div class="invalid-tooltip">Please provide a valid product title.</div>
+                                                <input type="text" class="form-control" id="product-tilte">
                                             </div>
+                                            <div id="notify-prod-title"></div>
                                         </div>
 
                                         <div class="col-xl-12 col-md-12">
                                             <label for="validationCustom17" data-toggle="tooltip" data-placement="left" title="3 digit number at the back of your card">Post Category </label>
                                             <div class="input-group">
-                                                <select class="form-control" id="validationCustom15" required="">
+                                                <select class="form-control" id="product-cate">
                                                     <?php
                                                     foreach ($data_lst_prod_cate as $prod_cate) {
                                                         ?>
@@ -233,19 +237,21 @@
                                         </div>
 
                                         <div class="col-xl-6 col-md-6 ">
-                                            <label for="validationCustom06">Product Price</label>
+                                            <label for="product-price">Product Price</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="validationCustom08" required>
-                                                <div class="invalid-tooltip">Please provide a valid product title.</div>
+                                                <input type="text" class="form-control" id="product-price" value="0">
+                                                <div id="notify-prod-price" class="mt-3"></div>
                                             </div>
+                                            <div id="notify-prod-price"></div>
                                         </div>
 
                                         <div class="col-xl-6 col-md-6 ">
-                                            <label for="validationCustom06">Product Promo</label>
+                                            <label for="product-promo">Product Promo</label>
                                             <div class="input-group">
-                                                <input type="text" class="form-control" id="validationCustom08" required>
-                                                <div class="invalid-tooltip">Please provide a valid product title.</div>
+                                                <input type="text" class="form-control" id="product-promo" value="0">
+                                                <div id="notify-prod-promo" class="mt-3"></div>
                                             </div>
+                                            <!--<div id="notify-prod-promo"></div>-->
                                         </div>
 
                                         <div class="col-xl-6 col-md-6 ">
@@ -256,7 +262,7 @@
                                                     ?>
                                                     <label class="checkbox-wrap" style="border-color: #<?= $color['ColorId'] ?>">
                                                         <input type="radio" name="product-color" value="" class="hide">
-                                                        <i class="my-checkbox-check" style="background: #<?= $color['ColorId'] ?>"></i>
+                                                        <i class="my-checkbox-check" style="background: #<?= $color['ColorId'] ?>" data-color-id="<?= $color['ColorId'] ?>"></i>
                                                     </label>
                                                     <?php
                                                 }
@@ -267,7 +273,7 @@
                                         <div class="col-xl-6 col-md-6">
                                             <label  data-toggle="tooltip" data-placement="left" title="3 digit number at the back of your card">Product Size </label>
                                             <div class="input-group">
-                                                <select class="form-control" required="">
+                                                <select class="form-control" id="size">
                                                     <?php
                                                     foreach ($data_lst_size as $size) {
                                                         ?>
@@ -282,18 +288,21 @@
                                         </div>
                                         
                                          <div class="col-xl-6 col-md-6 ">
-                                            <label for="validationCustom06">Product Amount</label>
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" required>
-                                                <div class="invalid-tooltip">Please provide a valid product title.</div>
-                                            </div>
+                                             <div id="amount-box">
+                                                 <label for="product-amount">Product Amount</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="product-amount" value="0">
+                                                    </div>
+                                             </div>
+                                             <div id="notify-prod-amount"></div>
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label for="validationCustom12">Description</label>
+                                            <label for="product-desc">Description</label>
                                             <div class="input-group">
-                                                <textarea rows="5" id="validationCustom12" class="form-control" required=""></textarea>
+                                                <textarea rows="5" id="product-desc" class="form-control" required=""></textarea>
                                             </div>
+                                            <div id="notify-prod-desc"></div>
                                         </div>
 
                                         <div class="col-lg-12">
@@ -317,7 +326,7 @@
                                 </form>
 
                                 <div class="button-control">
-                                    <button type="button" name="button" class="btn btn-primary ms-graph-metrics mr-3 trigger-swal" data-swal="multi-step">
+                                    <button type="button" name="button" class="btn btn-primary ms-graph-metrics mr-3" id="save-prodduct">
                                         <i class="fa fa-check-circle"></i>
                                         Save
                                     </button>
@@ -369,6 +378,10 @@
         <script src="public/js/perfect-scrollbar.js"></script>
         <script src="public/js/jquery-ui.min.js"></script>
         <!-- Global Required Scripts End -->
+        
+        <!-- Page Specific Scripts Start -->
+        <script src="public/js/toastr.min.js"> </script>
+        <script src="public/js/toast.js"> </script>
 
         <!-- Popups -->
         <script src="public/js/promise.min.js"></script>
@@ -394,6 +407,8 @@
 
         <!-- My Setting -->
         <script src="public/js/mySetting.js"></script>
+        <script src="public/js/class.js"></script>
+        <script src="public/js/helper.js"></script>
         <script src="public/js/setting_product_add.js"></script>
 
     </body>

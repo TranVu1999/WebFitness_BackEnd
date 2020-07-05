@@ -44,6 +44,29 @@ class Banner{
     }
 }
 
+class ProductAttr{
+    constructor(product_color, product_size, product_amount, lst_product_img) {
+        this.product_color = product_color;
+        this.product_size = product_size;
+        this.product_amount = product_amount;
+        this.lst_product_img = lst_product_img;
+    }
+}
 
+class Product{
+    constructor(product_title, product_alias, product_cate, product_desc, product_status, 
+    product_detail, product_avatar, product_attr, product_price, product_promo) {
+        this.product_title = product_title;
+        this.product_alias = product_alias;
+        this.product_cate = product_cate;
+        this.product_desc = product_desc;
+        this.product_status = product_status;
+        this.product_detail = product_detail;
+        this.product_avatar = product_avatar;
+        this.product_attr = product_attr;
+        this.product_price = product_price;
+        this.product_promo =  product_promo;
+    }
+}
 
 

@@ -54,6 +54,30 @@
                 </ul>
             </li>
             <!-- /Product page -->
+            
+            <!-- Product Category Page Elements -->
+            <li class="menu-item">
+                <a href="#" class="has-chevron" data-toggle="collapse" data-target="#prod-cate-page" aria-expanded="false" aria-controls="prod-cate-page">
+                    <span><i class="fas fa-cannabis"></i>Product Category</span>
+                </a>
+                <ul id="prod-cate-page" class="collapse" aria-labelledby="prod-cate-page" data-parent="#side-nav-accordion">
+                    <li> 
+                        <a href="product-list.html"><i class="fa fa-chevron-right"></i>Products-list</a> 
+                    </li>
+                    <li class="new"> 
+                        <a href="product-new.html"><i class="fa fa-chevron-right"></i>Products-new</a> 
+                        <span class="label">10</span>
+                    </li>
+                    <li class="new"> 
+                        <a href="product-delete.html"><i class="fa fa-chevron-right"></i>Cancel Products</a> 
+                        <span class="label">10</span>
+                    </li>
+                    <li> 
+                        <a href="?mod=product-category&controller=add"><i class="fa fa-chevron-right"></i>Add Product Category</a> 
+                    </li>
+                </ul>
+            </li>
+            <!-- /Product Category page -->
 
             <!-- Post Page Elements -->
             <li class="menu-item">
@@ -148,16 +172,16 @@
                 </a>
                 <ul id="tag" class="collapse" aria-labelledby="tag" data-parent="#side-nav-accordion">
                     <li> 
-                        <a href="tag-list.html"><i class="fa fa-chevron-right"></i>Tag List</a> 
+                        <a href=""><i class="fa fa-chevron-right"></i>Tag List</a> 
                     </li>
                     <li> 
-                        <a href="tag-new.html"><i class="fa fa-chevron-right"></i>Tag New</a> 
+                        <a href=""><i class="fa fa-chevron-right"></i>Tag New</a> 
                     </li>
                     <li> 
-                        <a href="tag-delete.html"><i class="fa fa-chevron-right"></i>Cancel Tag</a> 
+                        <a href=""><i class="fa fa-chevron-right"></i>Cancel Tag</a> 
                     </li>
                     <li> 
-                        <a href="tag-add.html"><i class="fa fa-chevron-right"></i>Add Tag</a> 
+                        <a href=""><i class="fa fa-chevron-right"></i>Add Tag</a> 
                     </li>
                 </ul>
             </li>
@@ -180,6 +204,28 @@
                     </li>
                     <li> 
                         <a href="banner-add.html"><i class="fa fa-chevron-right"></i>Add Banner</a> 
+                    </li>
+                </ul>
+            </li>
+            <!-- /Banner -->
+            
+            <!-- Course -->
+            <li class="menu-item">
+                <a href="#" class="has-chevron" data-toggle="collapse" data-target="#course" aria-expanded="false" aria-controls="course">
+                    <span><i class="fa fa-image"></i></i>Course</span>
+                </a>
+                <ul id="course" class="collapse" aria-labelledby="course" data-parent="#side-nav-accordion">
+                    <li> 
+                        <a href="banner-list.html"><i class="fa fa-chevron-right"></i>Banner List</a> 
+                    </li>
+                    <li> 
+                        <a href="banner-new.html"><i class="fa fa-chevron-right"></i>Banner New</a> 
+                    </li>
+                    <li> 
+                        <a href="banner-delete.html"><i class="fa fa-chevron-right"></i>Cancel Banner</a> 
+                    </li>
+                    <li> 
+                        <a href="?mod=course&controller=addCourse"><i class="fa fa-chevron-right"></i>Add Course</a> 
                     </li>
                 </ul>
             </li>
