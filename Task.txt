@@ -1,0 +1,13 @@
+﻿========================Các chức năng đã xây dựng cho module Invoice========================
+1. Tính tốc độ tăng trưởng của các hóa đơn (ngày hiện tại sao với ngày hôm trước)
+2. Tính tốc độ tăng trưởng của giá trị các hóa đơn đã thanh toán (ngày hiện tại so với ngày hôm trước)
+3. Tính tốc độ tăng trưởng của giá trị các hóa đơn đang vận chuyển (ngày hiện tại so với ngày hôm trước)
+4. Tính tốc độ tăng trưởng của giá trị các hóa đơn đang vận chuyển và đã thanh toán (ngày hiện tại so với ngày hôm trước).
+
+5. Xem các hóa đơn đã xóa
+6. Khôi phục hóa đơn đã xóa
+7. Xem chi tiết các hóa đơn
+8. Chỉnh sửa trạng thái của hóa đơn
+
+========================Các chức năng đã xây dựng cho module Banner========================
+1. Hoàn thành chức năng thêm banner

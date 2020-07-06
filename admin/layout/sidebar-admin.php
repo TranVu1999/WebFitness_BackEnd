@@ -194,7 +194,7 @@
                 </a>
                 <ul id="banner" class="collapse" aria-labelledby="banner" data-parent="#side-nav-accordion">
                     <li> 
-                        <a href="banner-list.html"><i class="fa fa-chevron-right"></i>Banner List</a> 
+                        <a href="?mod=banner"><i class="fa fa-chevron-right"></i>Banner List</a> 
                     </li>
                     <li> 
                         <a href="banner-new.html"><i class="fa fa-chevron-right"></i>Banner New</a> 
@@ -203,7 +203,7 @@
                         <a href="banner-delete.html"><i class="fa fa-chevron-right"></i>Cancel Banner</a> 
                     </li>
                     <li> 
-                        <a href="banner-add.html"><i class="fa fa-chevron-right"></i>Add Banner</a> 
+                        <a href="?mod=banner&controller=add"><i class="fa fa-chevron-right"></i>Add Banner</a> 
                     </li>
                 </ul>
             </li>
