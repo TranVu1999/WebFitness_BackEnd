@@ -6,6 +6,8 @@ class Lesson{
        this.desc = desc;
        this.path_video = path_video;
     }
+    
+    
 }
 
 class Chapter{

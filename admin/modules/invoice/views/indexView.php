@@ -1,8 +1,11 @@
 <?php
+//count($data_lst_invoice)
 //    echo '<pre>';
-//    print_r($nam);
-//    echo $nam[11]['InvoiceId'];
+//    print_r($economic_growth);
 //    echo '</pre>';
+//echo  date('Y-m-d', strtotime('-7 days'));
+//echo $economic_growth;
+//echo $text;
 ?>
 
 <!DOCTYPE html>
@@ -249,8 +252,8 @@
                             <div class="ms-card-body media">
                                 <div class="media-body">
                                     <h6>Total Orders</h6>
-                                    <p class="ms-card-change"> <i class="material-icons">arrow_upward</i> 4567</p>
-                                    <p class="fs-12">48% From Last 24 Hours</p>
+                                    <p class="ms-card-change"> <i class="material-icons">arrow_upward</i> <?=$economic_growth['amount_invoice']?></p>
+                                    <p class="fs-12"><?=$economic_growth['economic_growth']?>% From Last 24 Hours</p>
                                 </div>
                             </div>
                             <i class="flaticon-archive"></i>
@@ -262,8 +265,8 @@
                             <div class="ms-card-body media">
                                 <div class="media-body">
                                     <h6>Compeleted Orders</h6>
-                                    <p class="ms-card-change"> $80,950</p>
-                                    <p class="fs-12">2% Decreased from last day</p>
+                                    <p class="ms-card-change"> $<?=$economic_growth['invoice_complete_current']?></p>
+                                    <p class="fs-12"><?=$economic_growth['invoice_complete_current_growth']?>% Decreased from last day</p>
                                 </div>
                             </div>
                             <i class="flaticon-supermarket"></i>
@@ -275,8 +278,8 @@
                             <div class="ms-card-body media">
                                 <div class="media-body">
                                     <h6>Pending Orders</h6>
-                                    <p class="ms-card-change"> <i class="material-icons">arrow_upward</i> 4567</p>
-                                    <p class="fs-12">48% From Last 24 Hours</p>
+                                    <p class="ms-card-change"> $<?=$economic_growth['invoice_peding_current']?></p>
+                                    <p class="fs-12"><?=$economic_growth['invoice_peding_current_growth']?>% From Last 24 Hours</p>
                                 </div>
                             </div>
                             <i class="flaticon-reuse"></i>
@@ -288,8 +291,8 @@
                             <div class="ms-card-body pos media">
                                 <div class="media-body">
                                     <h6>Total Products</h6>
-                                    <p class="ms-card-change "> $80,950</p>
-                                    <p class="fs-12">2% Decreased from last week</p>
+                                    <p class="ms-card-change "> $<?=$economic_growth['invoice_current']?></p>
+                                    <p class="fs-12"><?=$economic_growth['invoice_current_growth']?>% Decreased From Last 24 Hours</p>
                                 </div>
                             </div>
                             <i class="fas fa-cannabis "></i>
@@ -311,31 +314,31 @@
                                     <table id="data-invoice" class="table table-striped thead-primary w-100">
                                         <tbody>
                                             <?php
-                                            for ($i = 0; $i < count($nam); $i++) {
+                                            for ($i = 0; $i < count($data_lst_invoice); $i++) {
                                                 ?>
-                                                <tr role="row" class="odd" data-id="<?=$nam[$i]['InvoiceId']?>">
-                                                    <td><?=$nam[$i]['InvoiceId']?></td>
-                                                    <td><?=$nam[$i]['InvoiceReceiver']?></td>
-                                                    <td><?=$nam[$i]['InvoiceTime']?></td>
-                                                    <td><?=$nam[$i]['AmountProduct']?></td>
-                                                    <td><?=$nam[$i]['InvoiceTotal']?></td>
+                                                <tr role="row" class="odd" data-id="<?=$data_lst_invoice[$i]['InvoiceId']?>">
+                                                    <td><?=$data_lst_invoice[$i]['InvoiceId']?></td>
+                                                    <td><?=$data_lst_invoice[$i]['InvoiceReceiver']?></td>
+                                                    <td><?=$data_lst_invoice[$i]['InvoiceTime']?></td>
+                                                    <td><?=$data_lst_invoice[$i]['AmountProduct']?></td>
+                                                    <td><?=$data_lst_invoice[$i]['InvoiceTotal']?></td>
                                                     <td>
                                                         
                                                         <span class="
                                                               <?php
-                                                                if ($nam[$i]['InvoiceSituation'] == 'Paid'){
+                                                                if ($data_lst_invoice[$i]['InvoiceSituation'] == 'Paid'){
                                                                     echo 'badge badge-primary';
                                                                 }
-                                                                else if($nam[$i]['InvoiceSituation'] == 'Pending'){
+                                                                else if($data_lst_invoice[$i]['InvoiceSituation'] == 'Pending'){
                                                                     echo 'badge badge-danger';
                                                                 }else{
                                                                     echo 'badge badge-warning';
                                                                 }
                                                               ?>
-                                                              "><?=$nam[$i]['InvoiceSituation']?></span>
+                                                              "><?=$data_lst_invoice[$i]['InvoiceSituation']?></span>
                                                     </td>
                                                     <td>
-                                                        <a href="?mod=invoice&controller=detail&action=index&invoiceId=<?=$nam[$i]['InvoiceId']?>" class="mr-3 ms-text-primary">
+                                                        <a href="?mod=invoice&controller=detail&action=index&invoiceId=<?=$data_lst_invoice[$i]['InvoiceId']?>" class="mr-3 ms-text-primary">
                                                             <i class="fa fa-eye "></i>
                                                         </a>
                                                         <a type="button" name="button" class="btn-transparent trigger-swal" data-swal="disable-record" data-id="<?=$nam[$i]['InvoiceId']?>">
