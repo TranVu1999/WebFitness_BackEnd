@@ -62,14 +62,14 @@
                 </a>
                 <ul id="prod-cate-page" class="collapse" aria-labelledby="prod-cate-page" data-parent="#side-nav-accordion">
                     <li> 
-                        <a href="product-list.html"><i class="fa fa-chevron-right"></i>Products-list</a> 
+                        <a href="?mod=product-category"><i class="fa fa-chevron-right"></i>Products-list</a> 
                     </li>
                     <li class="new"> 
                         <a href="product-new.html"><i class="fa fa-chevron-right"></i>Products-new</a> 
                         <span class="label">10</span>
                     </li>
                     <li class="new"> 
-                        <a href="product-delete.html"><i class="fa fa-chevron-right"></i>Cancel Products</a> 
+                        <a href="?mod=product-category&controller=del"><i class="fa fa-chevron-right"></i>Cancel Products</a> 
                         <span class="label">10</span>
                     </li>
                     <li> 
@@ -153,7 +153,7 @@
                 </a>
                 <ul id="invoice" class="collapse" aria-labelledby="invoice" data-parent="#side-nav-accordion">
                     <li> 
-                        <a href="invoice-list.html"><i class="fa fa-chevron-right"></i>Invoice List</a> 
+                        <a href="?mod=invoice"><i class="fa fa-chevron-right"></i>Invoice List</a> 
                     </li>
                     <li> 
                         <a href="invoice-new.html"><i class="fa fa-chevron-right"></i>Invoice New</a> 

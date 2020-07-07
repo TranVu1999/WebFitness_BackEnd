@@ -5,6 +5,7 @@
   $(".ms-panel-body").on('click', '.trigger-swal', function () {
     var swalType = $(this).data('swal');
     var banner_id = $(this).data("id");
+    var prod_cate_id = $(this).data("id");
     
     switch (swalType) {
       case 'disable-record':
@@ -185,6 +186,80 @@
                         data: data, // Dữ liệu được truyền lên server
                         dataType: 'text',
                         success: function (data) {
+                            if(data == true){
+                                $('ul.lst-banner li[data-banner-id="' + banner_id + '"]').remove();
+                                Swal.fire('Restored!', 'This banner has been restored.', 'success');
+                            }
+                        },
+                        // Phương thức này trả về lỗi xảy ra với ajax
+                        error: function (xhr, ajaxOptions, throwError) {
+                            // Lỗi 404: đường dẫn ko tìm được
+                            alert(xhr.Status);
+                            alert(throwError);
+                        }
+                    });
+                }
+            });
+            break;
+            
+//            Del prod cate
+        case 'del-prod-cate':
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then(function (result) {
+                if (result.value) {
+//                    alert(prod_cate_id);
+                    var data = {prod_cate_id: prod_cate_id };
+                    $.ajax({
+                        url: '?mod=product-category&controller=index&action=delProductCate',
+                        method: "POST",
+                        data: data, // Dữ liệu được truyền lên server
+                        dataType: 'text',
+                        success: function (data) {
+//                            alert(data);
+                            if(data == true){
+                                $('ul.lst-banner li[data-banner-id="' + banner_id + '"]').remove();
+                                Swal.fire('Restored!', 'This banner has been restored.', 'success');
+                            }
+                        },
+                        // Phương thức này trả về lỗi xảy ra với ajax
+                        error: function (xhr, ajaxOptions, throwError) {
+                            // Lỗi 404: đường dẫn ko tìm được
+                            alert(xhr.Status);
+                            alert(throwError);
+                        }
+                    });
+                }
+            });
+            break;
+        
+//        Restore Product Cate
+        case 'restore-prod-cate':
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then(function (result) {
+                if (result.value) {
+//                    alert(prod_cate_id);
+                    var data = {prod_cate_id: prod_cate_id };
+                    $.ajax({
+                        url: '?mod=product-category&controller=del&action=restoreProductCate',
+                        method: "POST",
+                        data: data, // Dữ liệu được truyền lên server
+                        dataType: 'text',
+                        success: function (data) {
+//                            alert(data);
                             if(data == true){
                                 $('ul.lst-banner li[data-banner-id="' + banner_id + '"]').remove();
                                 Swal.fire('Restored!', 'This banner has been restored.', 'success');

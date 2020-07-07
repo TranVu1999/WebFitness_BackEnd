@@ -13,3 +13,12 @@
 1. Hoàn thành chức năng thêm banner
 2. Hoàn thành chức năng xóa banner (js/app.js; indexController, indexView, indexModel)
 3. Hoàn thành chức năng khôi phục banner đã xóa (js/app.js; delController, delView, delModel)
+
+========================Các chức năng đã xây dựng cho module product category========================
+1. Hiển thị danh sách các product-category đang được active
+2. Hoàn thành chức năng xóa product-cate
+3. Hoành thành chức năng khôi phục product-cate.
+4. Hiển thị chi tiết product-cate theo id
+5. Tính số lượng sản phẩm thuộc danh mục sản phẩm
+6. Hiển thị các banner của danh mục sản phẩm
+7. Hoàn thành chức năng thêm danh mục sản phẩm

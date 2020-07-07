@@ -38,7 +38,7 @@ function add_product_cate($prod_cate_title, $prod_cate_desc, $prod_cate_avatar, 
 
     $getResuld = $conn->prepare($strquery);
     $getResuld->execute();
-    return True;
+    return $amount_row;
 }
 
 function update_address_banner($banner_id, $banner_address){
@@ -48,5 +48,27 @@ function update_address_banner($banner_id, $banner_address){
     $getResuld = $conn->prepare($strquery);
     $getResuld->execute();
     return True;
+}
+
+function get_amount_row_banner_address(){
+    global $conn;
+    $strquery = "SELECT COUNT(*) AS AmountRow FROM dbo.BannerAddress";
+
+    $getResuld = $conn->prepare($strquery);
+    $getResuld->execute();
+    $results = $getResuld -> fetchAll(PDO::FETCH_ASSOC);
+    return $results[0]['AmountRow'];
+}
+
+function add_banner_address($prod_cate_id, $banner_id){
+    global $conn;
+    $amount_row = (int)get_amount_row_banner_address() + 1;
+    $strquery = "INSERT dbo.BannerAddress
+        ( BannerAddressId ,ProductCateId ,BannerId)
+        VALUES  ( $amount_row , $prod_cate_id , $banner_id )";
+
+    $getResuld = $conn->prepare($strquery);
+    $getResuld->execute();
+    return true;
 }
 ?>

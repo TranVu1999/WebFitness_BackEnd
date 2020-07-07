@@ -27,3 +27,13 @@ function FormatDateToClient($date){
     return date("Y-m-d");
     
 }
+
+function encode_string($str){
+    $result = '';
+    $arr_word = explode("_",$str);
+    for($i = 0; $i < count($arr_word); $i++){
+        
+        $result .= ucwords(str_replace('"',"",$arr_word[$i])) . " ";
+    }
+    return $result;
+}

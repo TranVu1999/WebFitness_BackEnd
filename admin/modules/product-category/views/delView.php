@@ -1,10 +1,7 @@
 <?php
 //echo "<pre>";
-//print_r($test);
 //print_r($data_lst_prod_cate);
 //echo "</pre>";
-//
-//echo $data_lst_prod_cate[0]['banner'][0]['BannerPicture'];
 //
 //echo "<br>";
 //echo encode_string($data_lst_prod_cate[0]['ProductCateTitle']);
@@ -17,7 +14,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Admin - Product Category List</title>
+        <title>Admin - Deleted Product Category List</title>
         <!-- Iconic Fonts -->
         <link href="public/vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -83,7 +80,7 @@
                                 <div class="d-flex-between-center">
                                     <h1 class="color-808080 fs-28">List Product Category</h1>
                                     <div class="btn-control">
-                                        <a href="?mod=product-category&controller=del" class="btn btn-danger has-icon mr-3"><i class="far fa-trash-alt"></i>Remove Product Category</a>
+                                        <a href="product-delete.html" class="btn btn-danger has-icon mr-3"><i class="far fa-trash-alt"></i>Remove Product Category</a>
                                         <a href="?mod=product-category&controller=add" class="btn btn-primary has-icon"><i class="far fa-plus-square"></i> Add Product Category</a>
                                     </div>
 
@@ -97,7 +94,7 @@
                                         <li data-banner-id="<?=$prod_cate['ProductCateId']?>">
                                             <div class="banner-thumb">
                                                 <div class="thumb-img">
-                                                    <img src="<?=$prod_cate['banner'][0]['BannerPicture']?>" alt="Banner">
+                                                    <img src="<?=$prod_cate['banner']?>" alt="Banner">
                                                 </div>
                                                 <div class="banner-info">
                                                     <span class="border-bn border-top-bn"></span>
@@ -109,8 +106,8 @@
 
                                                     <ul class="banner-control">
                                                         <li>
-                                                            <button type="button" name="button" class="btn-transparent btn-bn-control btn-trash trigger-swal" data-swal="del-prod-cate" data-id="<?=$prod_cate['ProductCateId']?>">
-                                                                <i class="far fa-trash-alt"></i>
+                                                            <button type="button" name="button" class="btn-transparent btn-bn-control btn-trash trigger-swal" data-swal="restore-prod-cate" data-id="<?=$prod_cate['ProductCateId']?>">
+                                                                <i class="fa fa-reply"></i>
                                                             </button>
                                                         </li>
                                                         <li>

@@ -915,3 +915,11 @@ ul.banner-control li{
     font-size: 18px;
 }
 /*End style invoice-detail*/
+
+button a{
+    color: #fff;
+    font-size: inherit;
+}
+button a:hover{
+    color: #fff;
+}
