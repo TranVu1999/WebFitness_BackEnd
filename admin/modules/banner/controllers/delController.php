@@ -3,7 +3,7 @@
 // Tất cả các action được lưu trong này
 // hàm này sẽ được chạy lên trước rồi mới chạy tới mấy hàm sau
 function construct() {
-    load_model('index');
+    load_model('del');
 }
 
 function indexAction() {
@@ -18,7 +18,7 @@ function indexAction() {
         $data['data_lst_banner'][$i]['BannerAddress'] = encode_string(explode(", ",$temp)[0]);
     }
     
-    load_view('index', $data);
+    load_view('del', $data);
     
 }
 
@@ -33,10 +33,11 @@ function encode_string($str){
     return $result;
 }
 
-function delBannerAction() {
+function restoreBannerAction() {
     $banner_id = $_POST['banner_id'];
     
-    echo delete_banner($banner_id);
+    echo restore_banner($banner_id);
+//    echo $banner_id;
 }
 
 function addAction() {

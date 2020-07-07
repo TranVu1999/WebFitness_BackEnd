@@ -11,3 +11,5 @@
 
 ========================Các chức năng đã xây dựng cho module Banner========================
 1. Hoàn thành chức năng thêm banner
+2. Hoàn thành chức năng xóa banner (js/app.js; indexController, indexView, indexModel)
+3. Hoàn thành chức năng khôi phục banner đã xóa (js/app.js; delController, delView, delModel)

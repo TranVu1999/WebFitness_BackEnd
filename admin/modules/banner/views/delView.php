@@ -9,7 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width,initial-scale=1">
-        <title>Admin - Banner List</title>
+        <title>Admin - Remove Banner List</title>
         <!-- Iconic Fonts -->
         <link href="public/vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -85,49 +85,58 @@
                                 </div>
                             </div>
                             <div class="ms-panel-body">
-                                <ul class="lst-banner">
-
-                                    <?php
-                                    foreach ($data_lst_banner as $banner) {
-                                        ?>
-                                        <li data-banner-id="<?=$banner['BannerId']?>">
-                                            <div class="banner-thumb">
-                                                <div class="thumb-img">
-                                                    <img src="<?=$banner['BannerPicture']?>" alt="Banner">
-                                                </div>
-                                                <div class="banner-info">
-                                                    <span class="border-bn border-top-bn"></span>
-                                                    <span class="border-bn border-right-bn"></span>
-                                                    <span class="border-bn border-bottom-bn"></span>
-                                                    <span class="border-bn border-left-bn"></span>
-
-                                                    <h2 class="pos-page"><?=$banner['BannerAddress']?></h2>
-
-                                                    <ul class="banner-control">
-                                                        <li>
-                                                            <button type="button" name="button" class="btn-transparent btn-bn-control btn-trash trigger-swal" data-swal="del-banner" data-id="<?=$banner['BannerId']?>">
-                                                                <i class="far fa-trash-alt"></i>
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button type="button" name="button" class="btn-transparent btn-bn-control btn-view trigger-swal" data-swal="multi-step">
-                                                                <i class="fa fa-eye"></i>
-                                                            </button>
-                                                        </li>
-                                                        <li>
-                                                            <button type="button" name="button" class="btn-transparent btn-bn-control btn-edit trigger-swal" data-swal="multi-step">
-                                                                <i class="fa fa-edit"></i>
-                                                            </button>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
+                                <?php
+                                if (count($data_lst_banner) == 0) {
+                                    echo "<p>No result</p>";
+                                } else {
+                                    ?>
+                                    <ul class="lst-banner">
 
                                         <?php
-                                    }
-                                    ?>
-                                </ul>
+                                        foreach ($data_lst_banner as $banner) {
+                                            ?>
+                                            <li data-banner-id="<?= $banner['BannerId'] ?>">
+                                                <div class="banner-thumb">
+                                                    <div class="thumb-img">
+                                                        <img src="<?= $banner['BannerPicture'] ?>" alt="Banner">
+                                                    </div>
+                                                    <div class="banner-info">
+                                                        <span class="border-bn border-top-bn"></span>
+                                                        <span class="border-bn border-right-bn"></span>
+                                                        <span class="border-bn border-bottom-bn"></span>
+                                                        <span class="border-bn border-left-bn"></span>
+
+                                                        <h2 class="pos-page"><?= $banner['BannerAddress'] ?></h2>
+
+                                                        <ul class="banner-control">
+                                                            <li>
+                                                                <button type="button" name="button" class="btn-transparent btn-bn-control btn-trash trigger-swal" data-swal="restore-banner" data-id="<?= $banner['BannerId'] ?>">
+                                                                    <i class="fa fa-reply"></i>
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button type="button" name="button" class="btn-transparent btn-bn-control btn-view trigger-swal" data-swal="multi-step">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </button>
+                                                            </li>
+                                                            <li>
+                                                                <button type="button" name="button" class="btn-transparent btn-bn-control btn-edit trigger-swal" data-swal="multi-step">
+                                                                    <i class="fa fa-edit"></i>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+
+                                            <?php
+                                        }
+                                        ?>
+                                    </ul>
+
+                                    <?php
+                                }
+                                ?>
                             </div>
                         </div>
                     </div>

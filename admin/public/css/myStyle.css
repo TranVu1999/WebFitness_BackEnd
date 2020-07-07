@@ -731,6 +731,7 @@ hr {
 
 .banner-thumb .thumb-img img{
     opacity: .5;
+    width: 100%;
 }
 
 .banner-thumb .banner-info{
@@ -816,7 +817,7 @@ hr {
 
 ul.banner-control{
     position: absolute;
-    bottom: 10%;
+    bottom: 0%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

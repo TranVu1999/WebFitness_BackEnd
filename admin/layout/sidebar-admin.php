@@ -200,7 +200,7 @@
                         <a href="banner-new.html"><i class="fa fa-chevron-right"></i>Banner New</a> 
                     </li>
                     <li> 
-                        <a href="banner-delete.html"><i class="fa fa-chevron-right"></i>Cancel Banner</a> 
+                        <a href="?mod=banner&controller=del"><i class="fa fa-chevron-right"></i>Cancel Banner</a> 
                     </li>
                     <li> 
                         <a href="?mod=banner&controller=add"><i class="fa fa-chevron-right"></i>Add Banner</a> 

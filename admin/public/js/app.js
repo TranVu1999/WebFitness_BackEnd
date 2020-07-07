@@ -4,6 +4,8 @@
   // Add Course
   $(".ms-panel-body").on('click', '.trigger-swal', function () {
     var swalType = $(this).data('swal');
+    var banner_id = $(this).data("id");
+    
     switch (swalType) {
       case 'disable-record':
           
@@ -87,6 +89,7 @@
             });
           break;
         
+        
         case 'delete-record':
             var record_id = $(this).parent().parent().attr("data-id");
             Swal.fire({
@@ -126,6 +129,77 @@
               }
             });
           break;
+         
+//        Delete banner
+        case 'del-banner':
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then(function (result) {
+                if (result.value) {
+                    var data = {banner_id: banner_id};
+                    $.ajax({
+                        url: '?mod=banner&controller=index&action=delBanner',
+                        method: "POST",
+                        data: data, // Dữ liệu được truyền lên server
+                        dataType: 'text',
+                        success: function (data) {
+                            if(data == true){
+                                $('ul.lst-banner li[data-banner-id="' + banner_id + '"]').remove();
+                                Swal.fire('Deleted!', 'This banner has been deleted.', 'success');
+                            }
+
+                        },
+                        // Phương thức này trả về lỗi xảy ra với ajax
+                        error: function (xhr, ajaxOptions, throwError) {
+                            // Lỗi 404: đường dẫn ko tìm được
+                            alert(xhr.Status);
+                            alert(throwError);
+                        }
+                    });
+                }
+            });
+            break;
+        
+//        Restore banner
+        case 'restore-banner':
+            Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              type: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then(function (result) {
+                if (result.value) {
+                    var data = {banner_id: banner_id};
+                    $.ajax({
+                        url: '?mod=banner&controller=del&action=restoreBanner',
+                        method: "POST",
+                        data: data, // Dữ liệu được truyền lên server
+                        dataType: 'text',
+                        success: function (data) {
+                            if(data == true){
+                                $('ul.lst-banner li[data-banner-id="' + banner_id + '"]').remove();
+                                Swal.fire('Restored!', 'This banner has been restored.', 'success');
+                            }
+                        },
+                        // Phương thức này trả về lỗi xảy ra với ajax
+                        error: function (xhr, ajaxOptions, throwError) {
+                            // Lỗi 404: đường dẫn ko tìm được
+                            alert(xhr.Status);
+                            alert(throwError);
+                        }
+                    });
+                }
+            });
+            break;
       default:
         Swal.fire('The Internet?', 'That thing is still around?', 'question');
         break;

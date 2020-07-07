@@ -1,7 +1,7 @@
 <?php
     function get_list_banner(){
         global $conn;
-        $strquery = "SELECT * FROM dbo.Banner Where BannerStatus = 1";
+        $strquery = "SELECT * FROM dbo.Banner Where BannerStatus = 0";
 
         $getResuld = $conn->prepare($strquery);
         $getResuld->execute();
@@ -9,9 +9,9 @@
         return $results;
     }
     
-    function delete_banner($banner_id){
+    function restore_banner($banner_id){
         global $conn;
-        $strquery = "UPDATE dbo.Banner SET BannerStatus = 0 WHERE BannerId = $banner_id";
+        $strquery = "UPDATE dbo.Banner SET BannerStatus = 1 WHERE BannerId = $banner_id";
 
         $getResuld = $conn->prepare($strquery);
         $getResuld->execute();
