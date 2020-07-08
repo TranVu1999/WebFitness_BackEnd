@@ -62,18 +62,18 @@
                 </a>
                 <ul id="prod-cate-page" class="collapse" aria-labelledby="prod-cate-page" data-parent="#side-nav-accordion">
                     <li> 
-                        <a href="?mod=product-category"><i class="fa fa-chevron-right"></i>Products-list</a> 
+                        <a href="?mod=product-category"><i class="fa fa-chevron-right"></i>List Product Cate</a> 
                     </li>
                     <li class="new"> 
-                        <a href="product-new.html"><i class="fa fa-chevron-right"></i>Products-new</a> 
+                        <a href="product-new.html"><i class="fa fa-chevron-right"></i>Product Cate new</a> 
                         <span class="label">10</span>
                     </li>
                     <li class="new"> 
-                        <a href="?mod=product-category&controller=del"><i class="fa fa-chevron-right"></i>Cancel Products</a> 
+                        <a href="?mod=product-category&controller=del"><i class="fa fa-chevron-right"></i>Product Cate Cancel</a> 
                         <span class="label">10</span>
                     </li>
                     <li> 
-                        <a href="?mod=product-category&controller=add"><i class="fa fa-chevron-right"></i>Add Product Category</a> 
+                        <a href="?mod=product-category&controller=add"><i class="fa fa-chevron-right"></i>Add Product Cate</a> 
                     </li>
                 </ul>
             </li>

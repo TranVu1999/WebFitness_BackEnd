@@ -58,6 +58,6 @@ function indexAction() {
 
 function deleteInvoiceAction(){
     $record_id = $_POST['record_id'];
-    disable_invoice($record_id);
+//    disable_invoice($record_id);
     echo disable_invoice($record_id);
 }

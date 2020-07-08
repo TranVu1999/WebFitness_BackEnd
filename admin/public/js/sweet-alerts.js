@@ -10,6 +10,7 @@
       case 'basic':
         Swal.fire('The Internet?', 'That thing is still around?', 'question');
         break;
+        
       case 'with-footer':
         Swal.fire({
           type: 'error',
