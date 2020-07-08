@@ -115,7 +115,7 @@
                                                         </li>
                                                         <li>
                                                             <button type="button" name="button" class="btn-transparent btn-bn-control btn-view">
-                                                                <a href="?mod=product-category&controller=index&id=<?=$prod_cate['ProductCateId']?>"><i class="fa fa-eye"></i></a>
+                                                                <a href="?mod=product-category&controller=detail&id=<?=$prod_cate['ProductCateId']?>"><i class="fa fa-eye"></i></a>
                                                             </button>
                                                         </li>
                                                         <li>

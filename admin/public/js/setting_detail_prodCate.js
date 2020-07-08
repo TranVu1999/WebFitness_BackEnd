@@ -73,11 +73,9 @@ $('#slide #slide-item ul li').click(function(){
 var pro_cate_title = '';
 var pro_cate_desc = '';
 var path_img = '';
-var old_pro_cate_title = '';
 pro_cate_title = $('input#product-cate-title').val();
 pro_cate_desc = $('textarea#product-cate-desc').val();
 path_img = $('img#post-ava-upload').attr('src');
-old_pro_cate_title = pro_cate_title;
 //Get product cate avatar
 $('div#avatar-post').click(function(){
     if(pro_cate_title == ''){
@@ -137,20 +135,17 @@ $('#save-prod-cate').click(function(){
     }
     
     if(isAdd){
-        var prod_cate = new ProductCate('1', pro_cate_title, path_img, pro_cate_desc);
+        var prod_cate = new ProductCate($('input#prod-cate-id').val(), pro_cate_title, path_img, pro_cate_desc);
         var lst_banner = [];
-        var banner_address = change_alias(pro_cate_title).split(' ').join('_');
-        var old_banner_address = 'banner_' + change_alias(old_pro_cate_title).split(' ').join('_')
 
         var elm_show_items = $('#slide #slide-item ul li');
         var length = elm_show_items.length;
         for(var i = 0; i < length; i++){
-            var banner = new Banner(elm_show_items.eq(i).attr('data-id'), elm_show_items.eq(i).children('img').attr('src'), 'banner_' + banner_address);
+            var banner = new Banner(elm_show_items.eq(i).attr('data-id'), '', '');
             lst_banner.push(banner);
         }
 
-        var data = {prod_cate: JSON.stringify(prod_cate), lst_banner: JSON.stringify(lst_banner),
-            old_prod_cate_title : old_pro_cate_title, old_banner_address: old_banner_address};
+        var data = {prod_cate: JSON.stringify(prod_cate), lst_banner: JSON.stringify(lst_banner)};
         
         $.ajax({
             url: '?mod=product-category&controller=detail&action=editProductCate',

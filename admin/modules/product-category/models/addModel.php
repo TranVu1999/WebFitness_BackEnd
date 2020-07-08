@@ -61,14 +61,17 @@ function get_amount_row_banner_address(){
 }
 
 function add_banner_address($prod_cate_id, $banner_id){
-    global $conn;
-    $amount_row = (int)get_amount_row_banner_address() + 1;
-    $strquery = "INSERT dbo.BannerAddress
-        ( BannerAddressId ,ProductCateId ,BannerId)
-        VALUES  ( $amount_row , $prod_cate_id , $banner_id )";
+    try{
+        global $conn;
+        $strquery = "INSERT dbo.BannerAddress
+        ( ProductCateId ,BannerId)
+            VALUES  ( $prod_cate_id ,  $banner_id)";
 
-    $getResuld = $conn->prepare($strquery);
-    $getResuld->execute();
-    return true;
+        $getResuld = $conn->prepare($strquery);
+        $getResuld->execute();
+        return true;
+    } catch (Exception $ex) {
+        return false;
+    }
 }
 ?>

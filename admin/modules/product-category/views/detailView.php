@@ -81,7 +81,7 @@
                             <div class="ms-panel-body">
                                 <div id="slide">
                                     <div id="slide-thumb">
-                                        <img src="public/img/upload.PNG">
+                                        <img src="<?= $data_lst_banner_of_prod_cate[0]['BannerPicture'] ?>">
                                     </div>
                                     <div id="slide-item">
                                         <ul>
@@ -90,13 +90,13 @@
                                             for ($i; $i < count($data_lst_banner_of_prod_cate); $i++) {
                                                 if ($i == 0) {
                                                     ?>
-                                                    <li class="active">
+                                                    <li class="active" data-id="<?= $data_lst_banner_of_prod_cate[$i]['BannerId'] ?>">
                                                         <img src="<?= $data_lst_banner_of_prod_cate[$i]['BannerPicture'] ?>">
                                                     </li>
                                                     <?php
                                                 } else {
                                                     ?>
-                                                    <li>
+                                                    <li data-id="<?= $data_lst_banner_of_prod_cate[$i]['BannerId'] ?>">
                                                         <img src="<?= $data_lst_banner_of_prod_cate[$i]['BannerPicture'] ?>">
                                                     </li>
                                                     <?php
@@ -110,19 +110,18 @@
                                                 for ($i; $i < 4; $i++) {
                                                     if ($i == 0) {
                                                         ?>
-                                                        <li class="active">
+                                                        <li class="active" data-id="<?="-$i"?>">
                                                             <img src="public/img/upload.PNG">
                                                         </li>
                                                         <?php
                                                     } else {
                                                         ?>
-                                                        <li>
+                                                        <li data-id="<?="-$i"?>">
                                                             <img src="public/img/upload.PNG">
                                                         </li>
                                                         <?php
                                                     }
                                                     ?>
-
                                                     <?php
                                                 }
                                             }
@@ -161,7 +160,7 @@
 
                             <div class="ms-panel-body">
                                 <div class="thumb-avatar" id="avatar-post">
-                                    <img src="<?= $data_prod_cate['ProductAvatar'] ?>" alt="" id="post-ava-upload">
+                                    <img src="<?= $data_prod_cate['ProductAvatar']?>" alt="" id="post-ava-upload">
                                     <i class="fa fa-upload"></i>
                                     <input type="file" id="upload-avatar">
                                 </div>
@@ -199,6 +198,7 @@
                                     <div class="col-xl-12 col-md-12 ">
                                         <label for="validationCustom10">Product Category Name</label>
                                         <div class="input-group">
+                                            <input type="hidden" value="<?= $data_prod_cate['ProductCateId'] ?>" id="prod-cate-id">
                                             <input type="text" class="form-control" id="product-cate-title" placeholder="Product name" value="<?= $data_prod_cate['ProductCateTitle'] ?>">
                                         </div>
                                         <div id="notify_prod_cate_title" class="mt-3"></div>
