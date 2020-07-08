@@ -22,3 +22,5 @@
 5. Tính số lượng sản phẩm thuộc danh mục sản phẩm
 6. Hiển thị các banner của danh mục sản phẩm
 7. Hoàn thành chức năng thêm danh mục sản phẩm
+8. Hoàn thành chức năng chỉnh sửa danh mục sản phẩm
+
