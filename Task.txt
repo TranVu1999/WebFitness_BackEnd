@@ -8,6 +8,7 @@
 6. Khôi phục hóa đơn đã xóa
 7. Xem chi tiết các hóa đơn
 8. Chỉnh sửa trạng thái của hóa đơn
+9. Xóa các hóa đơn
 
 ========================Các chức năng đã xây dựng cho module Banner========================
 1. Hoàn thành chức năng thêm banner
@@ -23,4 +24,9 @@
 6. Hiển thị các banner của danh mục sản phẩm
 7. Hoàn thành chức năng thêm danh mục sản phẩm
 8. Hoàn thành chức năng chỉnh sửa danh mục sản phẩm
+
+========================Các chức năng đã xây dựng cho module PT========================
+1. Xử lý chức năng nhập các thông tin của pt (tên, hình ảnh, liên lạc,...)
+2. Chức năng thêm skill + val
+3. Chức năng xóa skill.
 

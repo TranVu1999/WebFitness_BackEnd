@@ -71,6 +71,22 @@ class Product{
     }
 }
 
+class PtSkill{   
+    constructor(pt_skill_id, pt_skill_title, pt_skill_val) {
+        this.pt_skill_id = pt_skill_id;
+        this.pt_skill_title = pt_skill_title;
+        this.pt_skill_val = pt_skill_val;
+    }
+}
+
+class Pt{   
+    constructor(pt_id, pt_name, pt_skill) {
+        this.pt_id = pt_id;
+        this.pt_name = pt_name;
+        this.pt_skill =  pt_skill;
+    }
+}
+
 
 
 

@@ -1,0 +1,53 @@
+input.input-text{
+    background: transparent;
+    color: #fff;
+    border: 1px dotted #fff;
+    border-radius: 10px;
+    max-width: 450px;
+}
+
+.fs-60{
+    font-size: 60px;
+}
+
+.fw-5{
+    font-weight: 500;
+}
+
+textarea.textarea-input-text{
+    border: 1px dotted #808080;
+    padding: 15px 10px;
+    width: 100%;
+    min-height: 350px;
+}
+
+li.ms-skill{
+    position: relative;
+}
+
+li.ms-skill span.remove-skill{
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+li.ms-skill input.input-skill{
+    background: transparent;
+    width: 100%;
+    height: 100%;
+}
+
+input.input-attr{
+    border: 1px dotted #808080;
+    border-radius: 5px;
+}
+
+div.process-skill{
+    cursor: pointer;
+}
+
+div.process-skill:hover{
+    background: #808080;
+}
