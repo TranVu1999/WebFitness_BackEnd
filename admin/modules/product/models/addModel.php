@@ -76,4 +76,13 @@
         $getResuld->execute();
         return True;
     }
+    
+    function get_3_newest_product(){
+    global $conn;
+        $strquery = "SELECT TOP 3 * FROM dbo.Product ORDER BY CreatedDate DESC";
+        $getResuld = $conn->prepare($strquery);
+        $getResuld->execute();
+        $results = $getResuld -> fetchAll(PDO::FETCH_ASSOC);
+        return $results;
+    }
 ?>

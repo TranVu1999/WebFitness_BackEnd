@@ -80,10 +80,34 @@ class PtSkill{
 }
 
 class Pt{   
-    constructor(pt_id, pt_name, pt_skill) {
+    constructor(pt_id, pt_name, pt_alias, pt_avatar, pt_sex, pt_birthday, pt_about, pt_experience, pt_skill, pt_timeline, pt_contact) {
         this.pt_id = pt_id;
         this.pt_name = pt_name;
+        this.pt_alias = pt_alias;
+        this.pt_avatar = pt_avatar;
+        this.pt_sex = pt_sex;
+        this.pt_birthday = pt_birthday;
+        this.pt_about = pt_about;
+        this.pt_experience = pt_experience;
         this.pt_skill =  pt_skill;
+        this.pt_timeline = pt_timeline;
+        this.pt_contact = pt_contact;
+    }
+}
+
+class PtTimeline{
+    constructor(pt_timeline_id, pt_timeline_title, pt_timeline_desc, pt_timeline_time) {
+        this.pt_timeline_id = pt_timeline_id;
+        this.pt_timeline_title = pt_timeline_title;
+        this.pt_timeline_desc = pt_timeline_desc;
+        this.pt_timeline_time = pt_timeline_time;
+    }
+}
+
+class PtContact{
+    constructor(contact_title, contact_value) {
+        this.contact_title = contact_title;
+        this.contact_value = contact_value;
     }
 }
 

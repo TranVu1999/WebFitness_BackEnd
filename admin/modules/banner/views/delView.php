@@ -106,7 +106,7 @@
                                                         <span class="border-bn border-bottom-bn"></span>
                                                         <span class="border-bn border-left-bn"></span>
 
-                                                        <h2 class="pos-page"><?= $banner['BannerAddress'] ?></h2>
+                                                        <h2 class="pos-page">Banner</h2>
 
                                                         <ul class="banner-control">
                                                             <li>

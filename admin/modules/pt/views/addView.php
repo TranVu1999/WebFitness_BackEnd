@@ -15,6 +15,8 @@
         <link href="public/css/jquery-ui.min.css" rel="stylesheet">
         <!-- Data table -->
         <link href="public/css/datatables.min.css" rel="stylesheet">
+         <!-- Slide -->
+        <link href="public/css/toastr.min.css" rel="stylesheet">
         <!-- Sweet -->
         <link href="public/css/sweetalert2.min.css" rel="stylesheet">
 
@@ -58,7 +60,11 @@
 
                 <div class="ms-profile-overview">
                     <div class="ms-profile-cover">
-                        <img class="ms-profile-img" src="public/img/dashboard/rakhan-potik-1.jpg" alt="people">
+                        <div class="thumb-avatar ms-profile-img" id="prod-avatar">
+                            <img src="" alt="" id="pt-avatar">
+                            <i class="fa fa-upload"></i>
+                            <input type="file" id="upload-avatar">
+                        </div>
                         <div class="ms-profile-user-info">
                             <!--<h1 class="ms-profile-username">Chihoo Hwang</h1>-->
                             <input type="text" class="input-text fs-60 fw-5" id="pt-name">
@@ -66,7 +72,7 @@
                         </div>
 
                         <div class="ms-profile-user-buttons">
-                            <a href="#" class="btn btn-primary"> <i class="material-icons">person_add</i> Add</a>
+                            <button id="add-pt" class="btn btn-primary"> <i class="material-icons">person_add</i> Add</button>
                         </div>
                     </div>
                 </div>
@@ -85,7 +91,6 @@
                                             <input type="text" class="input-skill">
                                             <span class="text-danger remove-skill" data-skill-id="0"><i class="far fa-times-circle"></i></span>
                                         </li>
-
                                     </ul>
                                 </div>
                             </div>
@@ -113,23 +118,37 @@
                                             <th scope="row">Full Name</th>
                                             <td>
                                                 <input type="text" class="input-attr" id="pt-full-name">
+                                                <div id="notify-pt-name"></div>
                                             </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Birthday</th>
-                                            <td><input type="text" class="input-attr" id="pt-birthday"></td>
+                                            <td>
+                                                <input type="text" class="input-attr" id="pt-birthday">
+                                                <div id="notify-pt-birthday"></div>
+                                            </td>
+                                            
                                         </tr>
                                         <tr>
                                             <th scope="row">Sex</th>
-                                            <td><input type="text" class="input-attr" id="pt-sex"></td>
+                                            <td>
+                                                <input type="text" class="input-attr" id="pt-sex">
+                                                <div id="notify-pt-sex"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Experience</th>
-                                            <td><input type="text" class="input-attr" id="pt-experience"></td>
+                                            <td>
+                                                <input type="text" class="input-attr" id="pt-experience">
+                                                <div id="notify-pt-experience"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Phone Number</th>
-                                            <td><input type="text" class="input-attr" id="pt-phone"></td>
+                                            <td>
+                                                <input type="text" class="input-attr" id="pt-phone">
+                                                <div id="notify-pt-phone"></div>
+                                            </td>
                                         </tr>
                                         <tr>
                                             <th scope="row">Email Address</th>
@@ -154,8 +173,6 @@
                                         <input  type="text" class="js-range-slider my-range" name="slider1" value="" />
                                         <button class="btn btn-primary add-val-skill"><i class="fa fa-plus-circle"></i></button>
                                     </div>
-                                    
-                                    
                                 </div>
                             </div>
                         </div>
@@ -165,33 +182,39 @@
                         <div class="ms-panel">
                             <div class="ms-panel-body">
                                 <h2 class="section-title">My Timeline</h2>
-                                <ul class="ms-activity-log">
-                                    <li>
-                                        <div class="ms-btn-icon btn-pill icon btn-success">
-                                            <i class="flaticon-tick-inside-circle"></i>
-                                        </div>
-                                        <h6>Computer Science Degree</h6>
-                                        <span> <i class="material-icons">event</i>1 January, 2018</span>
-                                        <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-                                    </li>
-
-                                    <li>
-                                        <div class="ms-btn-icon btn-pill icon btn-info">
-                                            <i class="flaticon-information"></i>
-                                        </div>
-                                        <h6>Landed first Job</h6>
-                                        <span> <i class="material-icons">event</i>4 March, 2018</span>
-                                        <p class="fs-14">Curabitur purus sem, malesuada eu luctus eget, suscipit sed turpis. Nam pellentesque felis vitae justo accumsan, sed semper nisi sollicitudin...</p>
-                                    </li>
-
-                                    <li>
-                                        <div class="ms-btn-icon btn-pill icon btn-success">
-                                            <i class="flaticon-tick-inside-circle"></i>
-                                        </div>
-                                        <h6>Started my own Company</h6>
-                                        <span> <i class="material-icons">event</i>1 March, 2020</span>
-                                        <p class="fs-14">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque scelerisque diam non nisi semper, ula in sodales vehicula....</p>
-                                    </li>
+                                
+                                <form id="add-timeline">
+                                    <div class="form-group">
+                                        <label for="pt-timeline-title">Timeline Title</label>
+                                        <input type="text" class="form-control" id="pt-timeline-title">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pt-timeline-time">Timeline Time</label>
+                                        <input type="text" class="form-control" id="pt-timeline-time">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pt-timeline-desc">Timeline Description</label>
+                                        <textarea class="form-control" id="pt-timeline-desc" rows="3"></textarea>
+                                    </div>
+                                    <div class="form-group text-center">
+                                        <button type="button" id="abort-time-line" class="btn btn-dark mr-3">
+                                            <i class="far fa-smile"></i>
+                                            Abort
+                                        </button>
+                                        <button type="button" id="save-time-line" class="btn btn-info">
+                                            <i class="fa fa-edit"></i>
+                                            Save
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fa fa-plus-circle"></i>
+                                            Save
+                                        </button>
+                                        
+                                    </div>
+                                </form>
+                                
+                                <ul id="pt-time-line" class="ms-activity-log mt-5">
+                                    
                                 </ul>
                             </div>
                         </div>
@@ -226,6 +249,10 @@
         <script src="public/js/perfect-scrollbar.js"></script>
         <script src="public/js/jquery-ui.min.js"></script>
         <!-- Global Required Scripts End -->
+        
+        <!-- Page Specific Scripts Start -->
+        <script src="public/js/toastr.min.js"></script>
+        <script src="public/js/toast.js"></script>
 
         <!-- Data table -->
         <script src="public/js/datatables.min.js"></script>
@@ -247,6 +274,7 @@
         <script src="public/js/settings.js"></script>
         <script src="public/js/mySetting.js"></script>
         <script src="public/js/class.js"></script>
+        <script src="public/js/helper.js"></script>
         <script src="public/js/setting_add_pt.js"></script>
 
     </body>

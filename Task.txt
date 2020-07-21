@@ -18,7 +18,7 @@
 ========================Các chức năng đã xây dựng cho module product category========================
 1. Hiển thị danh sách các product-category đang được active
 2. Hoàn thành chức năng xóa product-cate
-3. Hoành thành chức năng khôi phục product-cate.
+3. Hoành thành chức năng khôi phục product-cate
 4. Hiển thị chi tiết product-cate theo id
 5. Tính số lượng sản phẩm thuộc danh mục sản phẩm
 6. Hiển thị các banner của danh mục sản phẩm
@@ -26,7 +26,22 @@
 8. Hoàn thành chức năng chỉnh sửa danh mục sản phẩm
 
 ========================Các chức năng đã xây dựng cho module PT========================
-1. Xử lý chức năng nhập các thông tin của pt (tên, hình ảnh, liên lạc,...)
-2. Chức năng thêm skill + val
-3. Chức năng xóa skill.
+1. Xử lý chức năng nhập các thông tin của pt (tên, hình ảnh, liên lạc,...) (giao diện)
+2. Xử lý Chức năng thêm skill + val (giao diện)
+3. Xử lý Chức năng xóa skill (giao diện)
+4. Hoàn thành chức năng thêm timeline, chỉnh sửa timeline, xóa timeline (giao diện)
+5. Hoàn thành chức năng thêm pt
+
+========================Các chức năng đã xây dựng cho module Product========================
+1. Xử lý chức năng thêm sản phẩm.
+2. Hiển thị 3 sản phẩm mới nhất.
+3. Hiển thị danh sách sản phẩm đang được active
+4. Hoàn thành chức năng xóa sản phẩm.
+5. Hiển thị danh sách các sản phẩm đã xóa
+6. Hoàn thành chức năng khôi phục sản phẩm đã xóa.
+7. Xử lý hiển thị chi tiết sản phẩm.
+
+
+================================================================================================
+
 

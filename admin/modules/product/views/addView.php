@@ -1,6 +1,6 @@
 <?php
 //echo "<pre>";
-//print_r($data_lst_size);
+//print_r($_3_newest_product);
 //echo "</pre>";
 ?>
 <!DOCTYPE html>
@@ -80,42 +80,25 @@
                             </div>
                             <div class="ms-panel-body">
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="ms-card">
-                                            <div class="ms-card-img">
-                                                <img src="public/img/dashboard/product-1-530x240.jpg" alt="card_img">
-                                            </div>
-                                            <div class="ms-card-body">
-                                                <h6>Green Crack</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                                                <a href="post-detail.html" class="btn btn-primary btn-block">View Post</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="ms-card">
-                                            <div class="ms-card-img">
-                                                <img src="public/img/dashboard/product-1-530x240.jpg" alt="card_img">
-                                            </div>
-                                            <div class="ms-card-body">
-                                                <h6>Green Crack</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                                                <a href="post-detail.html" class="btn btn-primary btn-block">View Post</a>
+                                    <?php
+                                    foreach ($_3_newest_product as $product) {
+                                        ?>
+                                        <div class="col-lg-4 col-md-6 col-sm-6">
+                                            <div class="ms-card">
+                                                <div class="ms-card-img text-center">
+                                                    <img src="<?=$product['ProductAvatar']?>" alt="product avvatar" style="height: 200px">
+                                                </div>
+                                                <div class="ms-card-body">
+                                                    <h6><?=$product['ProductTitle']?></h6>
+                                                    <?=$product['ProductDesc']?>
+                                                    <a href="post-detail.html" class="btn btn-primary btn-block">View Product</a>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 col-sm-6">
-                                        <div class="ms-card">
-                                            <div class="ms-card-img">
-                                                <img src="public/img/dashboard/product-1-530x240.jpg" alt="card_img">
-                                            </div>
-                                            <div class="ms-card-body">
-                                                <h6>Green Crack</h6>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nunc velit, dictum eget nulla a, sollicitudin rhoncus orci. Vivamus nec commodo turpis.</p>
-                                                <a href="post-detail.html" class="btn btn-primary btn-block">View Post</a>
-                                            </div>
-                                        </div>
-                                    </div>                            
+
+                                        <?php
+                                    }
+                                    ?>                     
                                 </div>
                             </div>
                         </div>
@@ -191,7 +174,7 @@
                                 </div>
                                 <div id="notify-upload-slide" class="mt-3"></div>
                             </div>
-                            
+
                             <div class="ms-panel-header">
                                 <h1 class="fs-28 color-808080">Avatar</h1>
                             </div>
@@ -286,15 +269,15 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        
-                                         <div class="col-xl-6 col-md-6 ">
-                                             <div id="amount-box">
-                                                 <label for="product-amount">Product Amount</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="product-amount" value="0">
-                                                    </div>
-                                             </div>
-                                             <div id="notify-prod-amount"></div>
+
+                                        <div class="col-xl-6 col-md-6 ">
+                                            <div id="amount-box">
+                                                <label for="product-amount">Product Amount</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" id="product-amount" value="0">
+                                                </div>
+                                            </div>
+                                            <div id="notify-prod-amount"></div>
                                         </div>
 
                                         <div class="col-md-12">
@@ -378,10 +361,10 @@
         <script src="public/js/perfect-scrollbar.js"></script>
         <script src="public/js/jquery-ui.min.js"></script>
         <!-- Global Required Scripts End -->
-        
+
         <!-- Page Specific Scripts Start -->
-        <script src="public/js/toastr.min.js"> </script>
-        <script src="public/js/toast.js"> </script>
+        <script src="public/js/toastr.min.js"></script>
+        <script src="public/js/toast.js"></script>
 
         <!-- Popups -->
         <script src="public/js/promise.min.js"></script>

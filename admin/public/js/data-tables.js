@@ -315,7 +315,7 @@ var dataSet6 = [
       { title: "Product Id" },
       { title: "Product Name" },
       { title: "Product Price" },
-      { title: "Create Date" },
+      { title: "Amount" },
       { title: "Category" },
       { title: "Action" }
     ],

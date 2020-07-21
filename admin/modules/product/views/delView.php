@@ -10,7 +10,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Admin - Product List</title>
+    <title>Admin - List Removed Product</title>
     <!-- Iconic Fonts -->
     <link href="public/vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -77,7 +77,6 @@
                             <div class="d-flex-between-center">
                                 <h1 class="color-808080 fs-28">List Product</h1>
                                 <div class="btn-control">
-                                    <a href="?mod=product&controller=del" class="btn btn-danger has-icon mr-3"><i class="far fa-trash-alt"></i>Remove Product</a>
                                     <a href="?mod=product&controller=add" class="btn btn-primary has-icon"><i class="far fa-plus-square"></i> Add Product</a>
                                 </div>
                                 
@@ -100,8 +99,8 @@
                                                     <a href="?mod=product&controller=detail&action=index&id=<?=$product['ProductId']?>">
                                                         <i class="fa fa-edit ms-text-primary"></i>
                                                     </a>
-                                                    <button type="button" name="button" class="btn-transparent trigger-swal" data-swal="del-product" data-id="<?=$product['ProductId']?>">
-                                                        <i class="far fa-trash-alt ms-text-danger"></i>
+                                                    <button type="button" name="button" class="btn-transparent trigger-swal" data-swal="restore-product" data-id="<?=$product['ProductId']?>">
+                                                        <i class="fa fa-reply text-info"></i>
                                                     </button>
                                                 </td>
                                             </tr>

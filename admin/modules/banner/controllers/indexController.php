@@ -9,28 +9,9 @@ function construct() {
 function indexAction() {
     $data['data_lst_banner'] = get_list_banner();
     $amount_banner = count($data['data_lst_banner']);
-    for($i = 0; $i < $amount_banner; $i++){
-        $temp = substr_replace($data['data_lst_banner'][$i]['BannerAddress'], '', 0, 3);
-        $temp = substr_replace($temp, '', strlen($temp) - 2, 2);
-//        $data['data_lst_banner'][$i]['BannerAddress'] = $temp;
-        
-        
-        $data['data_lst_banner'][$i]['BannerAddress'] = encode_string(explode(", ",$temp)[0]);
-    }
     
     load_view('index', $data);
     
-}
-
-//Format string
-function encode_string($str){
-    $result = '';
-    $arr_word = explode("_",$str);
-    for($i = 0; $i < count($arr_word); $i++){
-        
-        $result .= ucwords(str_replace('"',"",$arr_word[$i])) . " ";
-    }
-    return $result;
 }
 
 function delBannerAction() {

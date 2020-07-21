@@ -10,6 +10,9 @@ function indexAction() {
     $data['data_lst_prod_cate'] = get_list_product_category();
     $data['data_lst_color'] = get_list_color();
     $data['data_lst_size'] = get_list_size();
+    
+    $_7_last_day = date('Y-m-d', strtotime('-7 days'));
+    $data['_3_newest_product'] = get_3_newest_product();
     load_view('add', $data);
     
 }

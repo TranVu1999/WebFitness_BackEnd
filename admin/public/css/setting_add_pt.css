@@ -49,5 +49,40 @@ div.process-skill{
 }
 
 div.process-skill:hover{
-    background: #808080;
+    background: #f3dddd;
+}
+
+ul.ms-activity-log li{
+    cursor: pointer;
+}
+
+button#save-time-line,
+button#abort-time-line{
+    display:none;
+}
+
+i.remove-icon{
+    display: none;
+}
+
+div.btn-success:hover i.remove-icon{
+    display: block;
+}
+
+div.btn-success:hover i.timeline-icon{
+    display: none;
+}
+
+.thumb-avatar.ms-profile-img{
+    width: 200px;
+    height: 200px;
+    min-height: 200px;
+    margin-bottom: -35px;
+    border: 3px solid #fff;
+    border-radius: 5px;
+}
+
+.alert{
+    margin-bottom: 0;
+    margin-top: 15px;
 }
