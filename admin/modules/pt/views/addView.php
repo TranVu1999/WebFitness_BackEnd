@@ -51,7 +51,7 @@
         <main class="body-content">
             <!-- Navigation Bar -->
             <?php
-            get_template_part('navigation-bar');
+                get_sidebar('admin');
             ?>
 
 
@@ -273,6 +273,7 @@
         <!-- Settings -->
         <script src="public/js/settings.js"></script>
         <script src="public/js/mySetting.js"></script>
+        
         <script src="public/js/class.js"></script>
         <script src="public/js/helper.js"></script>
         <script src="public/js/setting_add_pt.js"></script>

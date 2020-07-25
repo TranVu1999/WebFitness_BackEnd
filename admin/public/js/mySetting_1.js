@@ -47,26 +47,7 @@ $('#close-modal-lesson').click(function(){
     $('#modal-lesson').css('display', 'none');
 })
 // ================================= Invoice Detail ================================
-$('.invoice-status span.invoice-status-value').click(function(){
-    var str_situation = $(this).text();
-    if(str_situation == 'Pending'){
-        $(this).text('Transporting');
-        $(this).removeClass('badge-danger');
-        $(this).addClass('badge-warning');
-    }else if (str_situation == 'Transporting'){
-        $(this).text('Paid');
-        $(this).removeClass('badge-warning');
-        $(this).addClass('badge-secondary');
-    }else{
-        $(this).text('Pending');
-        $(this).removeClass('badge-secondary');
-        $(this).addClass('badge-danger');
-    }
 
-    $('.invoice-buttons .btn-save-invoice').css('display', 'inline-block');
-
-    // alert(str_situation);
-})
 // ================================= Add Banner ================================
 $('input.form-check-input.chk-pos-banner').change(function(){
     var chk_pos_banner = $(this).attr('id');

@@ -1,11 +1,13 @@
 var pt = new Pt('1', '', '', '','','','','', [], [], []);
 var current_skill_id = -1;
 var amount_skill = 0;
+
 //Add new input skill 
 $(document).on("blur", 'li.ms-skill:last-child input.input-skill', function() {
     var skill_tilte = $(this).val();
     if(skill_tilte != ''){
         amount_skill++;
+        
         $('ul.ms-skill-list').append('<li class="ms-skill">' +
                                     '<input type="text" class="input-skill">'+
                                     '<span class="text-danger remove-skill" data-skill-id="' + amount_skill + '"><i class="far fa-times-circle"></i></span>' +
@@ -13,6 +15,7 @@ $(document).on("blur", 'li.ms-skill:last-child input.input-skill', function() {
         $(this).parent().children('span.remove-skill').css('display', 'block');
         
         amount_skill--;
+        
         var pt_skill = new PtSkill(amount_skill, skill_tilte, 10);
         pt.pt_skill.push(pt_skill);
         
@@ -29,6 +32,7 @@ $(document).on("blur", 'li.ms-skill:last-child input.input-skill', function() {
 //Remove input skill 
 $(document).on("click", 'span.remove-skill', function() {
     var amount_input_skill = $('li.ms-skill').length;
+    
     if(amount_input_skill > 1){
         $(this).parent().remove();
         var skill_id = $(this).attr('data-skill-id');
@@ -107,6 +111,7 @@ $(document).on("click", 'ul#pt-time-line li h6', function() {
     var timeline_title = $(this).text();
     var timeline_time= $(this).parent().children('span').children('span.timeline-time').text();
     var timeline_desc = $(this).parent().children('p.timeline-desc').text();
+    
 //    alert(timeline_title);
     $('input#pt-timeline-title').val(timeline_title);
     $('input#pt-timeline-time').val(timeline_time);
@@ -139,6 +144,10 @@ $('button#abort-time-line').click(function(){
     $('input#pt-timeline-title').val('');
     $('input#pt-timeline-time').val('');
     $('textarea#pt-timeline-desc').val('');
+    
+    $('button#save-time-line').css('display', 'none');
+    $('button#abort-time-line').css('display', 'none');
+    $('button[type="submit"]').css('display', 'inline-block');
 })
 
 //Remove timeline
@@ -159,28 +168,25 @@ $('input#upload-avatar').change(function(event){
     $('img#pt-avatar').attr('src', path_img);
 })
 
+//Add pt's name
 $('input#pt-name').blur(function(){
     $('input#pt-full-name').val($(this).val());
     $('#notify-pt-name').html('');
 })
 
 $('input#pt-sex').blur(function(){
-    $('input#pt-full-name').val($(this).val());
     $('#notify-pt-sex').html('');
 })
 
 $('input#pt-birthday').blur(function(){
-    $('input#pt-full-name').val($(this).val());
     $('#notify-pt-birthday').html('');
 })
 
 $('input#pt-experience').blur(function(){
-    $('input#pt-full-name').val($(this).val());
     $('#notify-pt-experience').html('');
 })
 
 $('input#pt-phone').blur(function(){
-    $('input#pt-full-name').val($(this).val());
     $('#notify-pt-phone').html('');
 })
 
@@ -251,10 +257,12 @@ $('button#add-pt').click(function(){
         var pt_contact = new PtContact('Phone', pt_phone);
         pt.pt_contact.push(pt_contact);
     }
+    
     if(pt_email !== ''){
         var pt_contact = new PtContact('Email', pt_email);
         pt.pt_contact.push(pt_contact);
     }
+    
     if(pt_fb_link !== ''){
         var pt_contact = new PtContact('LinkFacebook', pt_fb_link);
         pt.pt_contact.push(pt_contact);
@@ -281,7 +289,7 @@ $('button#add-pt').click(function(){
             data: data, // Dữ liệu được truyền lên server
             dataType: 'text',
             success: function (data) {
-                if(data === true){
+                if(data == true){
                     toastr.remove();
                     toastr.options.positionClass = "toast-top-left";
                     toastr.error("This personal trainer is added.", 'Success!');

@@ -11,12 +11,17 @@ function get_list_invoice(){
 }
 
 function disable_invoice($invoice_id){
-    global $conn;
-    $strquery = "UPDATE dbo.Invoice SET InvoiceStatus = 0 WHERE InvoiceId = {$invoice_id}";
+    try{
+        global $conn;
+        $strquery = "UPDATE dbo.Invoice SET InvoiceStatus = 0 WHERE InvoiceId = {$invoice_id}";
+
+        $getResuld = $conn->prepare($strquery);
+        $getResuld->execute();
+        return true;
+    } catch (Exception $ex) {
+        return false;
+    }
     
-    $getResuld = $conn->prepare($strquery);
-    $getResuld->execute();
-    return true;
 }
 
 function get_amount_row_of_invoice_at_current_date(){

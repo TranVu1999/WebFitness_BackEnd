@@ -54,8 +54,8 @@
     <main class="body-content">
         <!-- Navigation Bar -->
         <?php
-            get_template_part('navigation-bar');
-        ?>
+            get_sidebar('admin');
+            ?>
     
         <!-- Body Content Wrapper -->
         <div class="ms-content-wrapper">

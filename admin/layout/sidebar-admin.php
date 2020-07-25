@@ -129,7 +129,7 @@
                 </a>
                 <ul id="personal-trainer" class="collapse" aria-labelledby="personal-trainer" data-parent="#side-nav-accordion">
                     <li> 
-                        <a href="pt-list.html"><i class="fa fa-chevron-right"></i>PT List</a> 
+                        <a href="?mod=pt"><i class="fa fa-chevron-right"></i>PT List</a> 
                     </li>
                     <li class="new"> 
                         <a href="product-new.html"><i class="fa fa-chevron-right"></i>PT New</a>
@@ -140,7 +140,7 @@
                         <span class="label">10</span> 
                     </li>
                     <li> 
-                        <a href="pt-add.html"><i class="fa fa-chevron-right"></i>Add PT</a> 
+                        <a href="?mod=pt&controller=add"><i class="fa fa-chevron-right"></i>Add PT</a> 
                     </li>
                 </ul>
             </li>
@@ -216,7 +216,7 @@
                 </a>
                 <ul id="course" class="collapse" aria-labelledby="course" data-parent="#side-nav-accordion">
                     <li> 
-                        <a href="banner-list.html"><i class="fa fa-chevron-right"></i>Banner List</a> 
+                        <a href="?"><i class="fa fa-chevron-right"></i>Banner List</a> 
                     </li>
                     <li> 
                         <a href="banner-new.html"><i class="fa fa-chevron-right"></i>Banner New</a> 

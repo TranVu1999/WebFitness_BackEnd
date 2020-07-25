@@ -15,7 +15,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta lst_invoice_cancele="viewport" content="width=device-width,initial-scale=1">
         <title>Admin - Invoice List</title>
-        <base href="http://localhost:8080/unitop/back-end/lesson/MyFitness/admin/" target="_blank">
+<!--        <base href="http://localhost:8080/unitop/back-end/lesson/MyFitness/admin/" target="_blank">-->
         <!-- Iconic Fonts -->
         <link href="public/vendors/iconic-fonts/font-awesome/css/all.min.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">

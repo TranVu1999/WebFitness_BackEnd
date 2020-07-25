@@ -21,6 +21,7 @@ function addPtAction() {
     $res = add_pt($pt->pt_name, $pt->pt_alias, $pt->pt_avatar, $pt->pt_sex, $pt->pt_birthday, $pt->pt_about, $pt->pt_experience);
     
     $pt_id = get_pt_by_alias($pt->pt_alias)[0]['PtId'];
+    
     foreach($pt->pt_contact as $contact){
         $res = add_pt_contact($contact->contact_title, $contact->contact_value, $pt_id);
     }

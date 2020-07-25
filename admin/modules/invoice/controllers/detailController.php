@@ -13,8 +13,11 @@ function indexAction() {
     
 }
 
-function addAction() {
-
+function updateStatusInvoiceAction() {
+    $invoice_id = $_POST['invoice_id'];
+    $invoice_status = $_POST['invoice_status'];
+    
+    echo $invoice_id . $invoice_status;
 }
 
 function editAction() {

@@ -12,7 +12,8 @@ function indexAction() {
     $total_invoice_comlete = get_total_invoice_completed_at_current_date();
     $total_invoice_pending = get_total_invoice_pending_at_current_date();
     
-    $last_day = date('Y-m-d', strtotime('-1 days'));
+    $last_day = date('Y-m-d', strtotime('-1 days')); // Ngày hôm trước
+    
     $amount_invoice_at_last_date = (int)get_amount_row_of_invoice_at_last_date($last_day);
     $total_invoice_complete_last_date = get_total_invoice_completed_at_last_date($last_day);
     $total_invoice_pending_last_date = get_total_invoice_pending_at_last_date($last_day);
