@@ -20,7 +20,7 @@ $('.invoice-status span.invoice-status-value').click(function(){
 })
 
 $('button#save-invoice').click(function(){
-    var invoice_status = $('.invoice-status span.invoice-status-value').text();
+    var invoice_situation = $('.invoice-status span.invoice-status-value').text();
     var invoice_id = $('h6#invoice-id').attr('data-id');
     toastr.options ={
         "closeButton": false,
@@ -40,7 +40,7 @@ $('button#save-invoice').click(function(){
         "hideMethod": "fadeOut"
     };
     
-    var data = {invoice_id:invoice_id, invoice_status:invoice_status};
+    var data = {invoice_id:invoice_id, invoice_situation:invoice_situation};
     $.ajax({
         url: '?mod=invoice&controller=detail&action=updateStatusInvoice',
         method: "POST",
@@ -50,9 +50,8 @@ $('button#save-invoice').click(function(){
             if(data == true){
                 toastr.remove();
                 toastr.options.positionClass = "toast-top-left";
-                toastr.success("This personal trainer is added.", 'Success!');
+                toastr.success("This invoice is changed.", 'Success!');
             }
-            alert(data);
         },
         // Phương thức này trả về lỗi xảy ra với ajax
         error: function (xhr, ajaxOptions, throwError) {

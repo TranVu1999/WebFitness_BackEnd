@@ -98,7 +98,21 @@
                                         </li>
                                         <li class="invoice-status">
                                             <span class="label">Invoice Status :</span> 
-                                            <span class="badge badge-pill badge-secondary invoice-status-value">Secondary</span>
+                                            <span class="
+                                                  badge badge-pill
+                                                  <?php
+                                                    if($invoice_detail[0]['InvoiceSituation'] == 'Pending'){
+                                                        echo "badge-danger";
+                                                    }else if($invoice_detail[0]['InvoiceSituation'] == 'Transporting'){
+                                                        echo "badge-warning";
+                                                    }else if($invoice_detail[0]['InvoiceSituation'] == 'Paid'){
+                                                        echo "badge-secondary";
+                                                    }
+                                                  ?>
+                                                  
+                                                  invoice-status-value">
+                                                <?=$invoice_detail[0]['InvoiceSituation']?>
+                                            </span>
                                         </li>
                                         <li><span class="label">Discount Code :</span><u>KHASH-HJASH-HJACH</u> </li>
                                         <li><span class="label">Invoice Total :</span> <b>$155</b></li>

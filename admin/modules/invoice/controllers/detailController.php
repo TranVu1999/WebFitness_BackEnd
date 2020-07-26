@@ -15,9 +15,9 @@ function indexAction() {
 
 function updateStatusInvoiceAction() {
     $invoice_id = $_POST['invoice_id'];
-    $invoice_status = $_POST['invoice_status'];
+    $invoice_situation = $_POST['invoice_situation'];
     
-    echo $invoice_id . $invoice_status;
+    echo update_situation_invoice($invoice_id, $invoice_situation);
 }
 
 function editAction() {

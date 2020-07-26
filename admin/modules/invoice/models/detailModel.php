@@ -9,3 +9,18 @@ function get_list_invoice_by_id($invoide_id){
     $results = $getResuld -> fetchAll(PDO::FETCH_ASSOC);
     return $results;
 }
+
+function update_situation_invoice($invoide_id, $invoice_situation){
+    try{
+        global $conn;
+        $strquery = "UPDATE dbo.Invoice SET InvoiceSituation = '$invoice_situation' WHERE InvoiceId = $invoide_id";
+
+        $getResuld = $conn->prepare($strquery);
+        $getResuld->execute();
+        return true;
+    } catch (Exception $ex) {
+        return false;
+    }
+    
+}
+
